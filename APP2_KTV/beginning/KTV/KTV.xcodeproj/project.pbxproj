@@ -7,10 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18703D2B2AFBA840007CAA6A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18703D2A2AFBA840007CAA6A /* HomeViewController.swift */; };
+		18703D322AFBA9AA007CAA6A /* HomeVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18703D302AFBA9AA007CAA6A /* HomeVideoCell.swift */; };
+		18703D332AFBA9AA007CAA6A /* HomeVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18703D312AFBA9AA007CAA6A /* HomeVideoCell.xib */; };
+		18703D352AFBBCB5007CAA6A /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18703D342AFBBCB5007CAA6A /* HomeSection.swift */; };
+		18703D392AFBBF81007CAA6A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18703D382AFBBF81007CAA6A /* TabBarController.swift */; };
+		18BCA14B2AFCF83F00425F66 /* HomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCA1492AFCF83F00425F66 /* HomeHeaderCell.swift */; };
+		18BCA14C2AFCF83F00425F66 /* HomeHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BCA14A2AFCF83F00425F66 /* HomeHeaderCell.xib */; };
+		18BCA14F2AFCFB7D00425F66 /* HomeFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCA14D2AFCFB7D00425F66 /* HomeFooterCell.swift */; };
+		18BCA1502AFCFB7D00425F66 /* HomeFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BCA14E2AFCFB7D00425F66 /* HomeFooterCell.xib */; };
+		18BCA1532AFCFFB800425F66 /* HomeRecommendContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCA1512AFCFFB800425F66 /* HomeRecommendContainerCell.swift */; };
+		18BCA1542AFCFFB800425F66 /* HomeRecommendContainerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BCA1522AFCFFB800425F66 /* HomeRecommendContainerCell.xib */; };
+		18BCA1592AFD043100425F66 /* HomeRecommendItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCA1572AFD043100425F66 /* HomeRecommendItemCell.swift */; };
+		18BCA15A2AFD043100425F66 /* HomeRecommendItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BCA1582AFD043100425F66 /* HomeRecommendItemCell.xib */; };
 		68CA313C2AAA292900A744AF /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68CA313B2AAA292900A744AF /* Color.xcassets */; };
 		95E70C962AA8B93B007BAD7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E70C952AA8B93B007BAD7B /* AppDelegate.swift */; };
 		95E70C982AA8B93B007BAD7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E70C972AA8B93B007BAD7B /* SceneDelegate.swift */; };
-		95E70C9A2AA8B93B007BAD7B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E70C992AA8B93B007BAD7B /* ViewController.swift */; };
+		95E70C9A2AA8B93B007BAD7B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E70C992AA8B93B007BAD7B /* LoginViewController.swift */; };
 		95E70C9D2AA8B93B007BAD7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E70C9B2AA8B93B007BAD7B /* Main.storyboard */; };
 		95E70C9F2AA8B93D007BAD7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E70C9E2AA8B93D007BAD7B /* Assets.xcassets */; };
 		95E70CA22AA8B93D007BAD7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E70CA02AA8B93D007BAD7B /* LaunchScreen.storyboard */; };
@@ -37,11 +50,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18703D2A2AFBA840007CAA6A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		18703D302AFBA9AA007CAA6A /* HomeVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVideoCell.swift; sourceTree = "<group>"; };
+		18703D312AFBA9AA007CAA6A /* HomeVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVideoCell.xib; sourceTree = "<group>"; };
+		18703D342AFBBCB5007CAA6A /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
+		18703D382AFBBF81007CAA6A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		18BCA1492AFCF83F00425F66 /* HomeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCell.swift; sourceTree = "<group>"; };
+		18BCA14A2AFCF83F00425F66 /* HomeHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderCell.xib; sourceTree = "<group>"; };
+		18BCA14D2AFCFB7D00425F66 /* HomeFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFooterCell.swift; sourceTree = "<group>"; };
+		18BCA14E2AFCFB7D00425F66 /* HomeFooterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFooterCell.xib; sourceTree = "<group>"; };
+		18BCA1512AFCFFB800425F66 /* HomeRecommendContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendContainerCell.swift; sourceTree = "<group>"; };
+		18BCA1522AFCFFB800425F66 /* HomeRecommendContainerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeRecommendContainerCell.xib; sourceTree = "<group>"; };
+		18BCA1572AFD043100425F66 /* HomeRecommendItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendItemCell.swift; sourceTree = "<group>"; };
+		18BCA1582AFD043100425F66 /* HomeRecommendItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeRecommendItemCell.xib; sourceTree = "<group>"; };
 		68CA313B2AAA292900A744AF /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		95E70C922AA8B93B007BAD7B /* KTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E70C952AA8B93B007BAD7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95E70C972AA8B93B007BAD7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		95E70C992AA8B93B007BAD7B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		95E70C992AA8B93B007BAD7B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		95E70C9C2AA8B93B007BAD7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95E70C9E2AA8B93D007BAD7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95E70CA12AA8B93D007BAD7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,6 +104,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18703D262AFBA7D9007CAA6A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				18703D2C2AFBA948007CAA6A /* Cell */,
+				18703D2A2AFBA840007CAA6A /* HomeViewController.swift */,
+				18703D342AFBBCB5007CAA6A /* HomeSection.swift */,
+				18703D382AFBBF81007CAA6A /* TabBarController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		18703D272AFBA7E6007CAA6A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				95E70C992AA8B93B007BAD7B /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		18703D2C2AFBA948007CAA6A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18703D302AFBA9AA007CAA6A /* HomeVideoCell.swift */,
+				18703D312AFBA9AA007CAA6A /* HomeVideoCell.xib */,
+				18BCA1492AFCF83F00425F66 /* HomeHeaderCell.swift */,
+				18BCA14A2AFCF83F00425F66 /* HomeHeaderCell.xib */,
+				18BCA14D2AFCFB7D00425F66 /* HomeFooterCell.swift */,
+				18BCA14E2AFCFB7D00425F66 /* HomeFooterCell.xib */,
+				18BCA1512AFCFFB800425F66 /* HomeRecommendContainerCell.swift */,
+				18BCA1522AFCFFB800425F66 /* HomeRecommendContainerCell.xib */,
+				18BCA1572AFD043100425F66 /* HomeRecommendItemCell.swift */,
+				18BCA1582AFD043100425F66 /* HomeRecommendItemCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		95E70C892AA8B93B007BAD7B = {
 			isa = PBXGroup;
 			children = (
@@ -101,9 +163,10 @@
 		95E70C942AA8B93B007BAD7B /* KTV */ = {
 			isa = PBXGroup;
 			children = (
+				18703D272AFBA7E6007CAA6A /* Login */,
+				18703D262AFBA7D9007CAA6A /* Home */,
 				95E70C952AA8B93B007BAD7B /* AppDelegate.swift */,
 				95E70C972AA8B93B007BAD7B /* SceneDelegate.swift */,
-				95E70C992AA8B93B007BAD7B /* ViewController.swift */,
 				95E70C9B2AA8B93B007BAD7B /* Main.storyboard */,
 				95E70C9E2AA8B93D007BAD7B /* Assets.xcassets */,
 				68CA313B2AAA292900A744AF /* Color.xcassets */,
@@ -236,8 +299,13 @@
 			files = (
 				95E70CA22AA8B93D007BAD7B /* LaunchScreen.storyboard in Resources */,
 				68CA313C2AAA292900A744AF /* Color.xcassets in Resources */,
+				18BCA15A2AFD043100425F66 /* HomeRecommendItemCell.xib in Resources */,
 				95E70C9F2AA8B93D007BAD7B /* Assets.xcassets in Resources */,
+				18703D332AFBA9AA007CAA6A /* HomeVideoCell.xib in Resources */,
 				95E70C9D2AA8B93B007BAD7B /* Main.storyboard in Resources */,
+				18BCA1542AFCFFB800425F66 /* HomeRecommendContainerCell.xib in Resources */,
+				18BCA1502AFCFB7D00425F66 /* HomeFooterCell.xib in Resources */,
+				18BCA14C2AFCF83F00425F66 /* HomeHeaderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +330,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95E70C9A2AA8B93B007BAD7B /* ViewController.swift in Sources */,
+				95E70C9A2AA8B93B007BAD7B /* LoginViewController.swift in Sources */,
+				18BCA14B2AFCF83F00425F66 /* HomeHeaderCell.swift in Sources */,
+				18BCA1532AFCFFB800425F66 /* HomeRecommendContainerCell.swift in Sources */,
+				18BCA14F2AFCFB7D00425F66 /* HomeFooterCell.swift in Sources */,
 				95E70C962AA8B93B007BAD7B /* AppDelegate.swift in Sources */,
+				18703D352AFBBCB5007CAA6A /* HomeSection.swift in Sources */,
+				18BCA1592AFD043100425F66 /* HomeRecommendItemCell.swift in Sources */,
 				95E70C982AA8B93B007BAD7B /* SceneDelegate.swift in Sources */,
+				18703D392AFBBF81007CAA6A /* TabBarController.swift in Sources */,
+				18703D322AFBA9AA007CAA6A /* HomeVideoCell.swift in Sources */,
+				18703D2B2AFBA840007CAA6A /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,10 +517,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5K3W33ZZ68;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KTV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -468,10 +545,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5K3W33ZZ68;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KTV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
