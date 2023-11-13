@@ -44,10 +44,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygb-2y-W1R" userLabel="playTimeBgView">
-                                                <rect key="frame" x="72" y="41" width="30" height="15"/>
+                                                <rect key="frame" x="67" y="41" width="36" height="15"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2:49" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzx-4A-aBo">
-                                                        <rect key="frame" x="3" y="1" width="23" height="12"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:49" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzx-4A-aBo">
+                                                        <rect key="frame" x="3" y="1" width="29" height="12"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                         <color key="textColor" name="main-wh"/>
                                                         <nil key="highlightedColor"/>
@@ -60,14 +60,13 @@
                                                     <constraint firstItem="kzx-4A-aBo" firstAttribute="leading" secondItem="Ygb-2y-W1R" secondAttribute="leading" constant="3" id="PUL-Kx-DTx"/>
                                                     <constraint firstAttribute="height" constant="15" id="kj1-Zc-M5x"/>
                                                     <constraint firstAttribute="bottom" secondItem="kzx-4A-aBo" secondAttribute="bottom" constant="2" id="qX8-hC-JdV"/>
-                                                    <constraint firstAttribute="width" constant="30" id="qdz-CF-VpH"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Ygb-2y-W1R" secondAttribute="bottom" constant="4" id="BY9-nr-5I9"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ygb-2y-W1R" secondAttribute="trailing" constant="5" id="EZ6-uM-ppe"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ygb-2y-W1R" secondAttribute="trailing" constant="4" id="EZ6-uM-ppe"/>
                                             <constraint firstItem="kxT-Zz-5b6" firstAttribute="leading" secondItem="RaX-56-Ixb" secondAttribute="leading" id="KRR-dg-GEn"/>
                                             <constraint firstAttribute="height" constant="60" id="U0E-rM-ML3"/>
                                             <constraint firstAttribute="trailing" secondItem="hEV-QK-LYp" secondAttribute="trailing" id="UlT-VI-79V"/>

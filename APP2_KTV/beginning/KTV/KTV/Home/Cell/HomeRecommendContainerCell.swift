@@ -9,24 +9,27 @@ import UIKit
 
 protocol HomeRecommendContainerCellDelegate: AnyObject {
     func homeRecommendContainerCell(_ cell: HomeRecommendContainerCell, didSelectItemAt index: Int)
+    func homeRecommendContainerCellFoldChanged(_ cell: HomeRecommendContainerCell)
 }
 
 class HomeRecommendContainerCell: UITableViewCell {
     static let identifier: String = "HomeRecommendContainerCell"
-    static var height: CGFloat {
+    static func height(viewModel: HomeRecommendViewModel) -> CGFloat {
         let top: CGFloat = 84 - 6 // top spacing - cell item padding
         let bottom: CGFloat = 68 - 6 // bottom spacing - cell item padding
         let footerInset: CGFloat = 51 // container cell ~ footer 까지의 여백
-        return HomeRecommendItemCell.height * 5 + top + bottom + footerInset
+        return HomeRecommendItemCell.height * CGFloat(viewModel.itemCount) + top + bottom + footerInset
     }
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var recommendTitleView: UILabel!
     @IBOutlet weak var recommendTableView: UITableView!
-    @IBOutlet weak var unfoldBtn: UIImageView!
+    @IBOutlet weak var foldBtn: UIButton!
+    
     private var recommends: [Home.Recommend]?
     
     weak var delegate: HomeRecommendContainerCellDelegate?
+    private var viewModel: HomeRecommendViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,6 +52,29 @@ class HomeRecommendContainerCell: UITableViewCell {
         self.recommends = data
         self.recommendTableView.reloadData()
     }
+    
+    @IBAction func foldBtnTapped(_ sender: Any) {
+        self.viewModel?.toggleFoldState()
+        self.delegate?.homeRecommendContainerCellFoldChanged(self)
+    }
+    
+    func setViewModel(_ viewModel: HomeRecommendViewModel) {
+        self.viewModel = viewModel
+        self.setButtonImage(viewModel.isFolded)
+        self.recommendTableView.reloadData()
+        self.viewModel?.foldChanged = { [weak self] isFolded in
+            guard let self else { return }
+            
+            self.recommendTableView.reloadData()
+            self.setButtonImage(isFolded)
+        }
+    }
+    
+    private func setButtonImage(_ isFolded: Bool) {
+        let imageName: String = isFolded ? "unfold" : "fold"
+        
+        self.foldBtn.setImage(UIImage(named: imageName), for: .normal)
+    }
 }
 
 extension HomeRecommendContainerCell: UITableViewDelegate, UITableViewDataSource {
@@ -57,14 +83,14 @@ extension HomeRecommendContainerCell: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.recommends?.count ?? 0
+        self.viewModel?.recommends?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeRecommendItemCell.identifier, for: indexPath)
         
         if let cell = cell as? HomeRecommendItemCell,
-           let data = self.recommends?[indexPath.row] {
+           let data = self.viewModel?.recommends?[indexPath.row] {
             cell.setData(data, rank: indexPath.row + 1)
         }
         

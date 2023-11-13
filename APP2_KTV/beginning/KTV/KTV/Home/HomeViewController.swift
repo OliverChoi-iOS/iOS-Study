@@ -57,9 +57,7 @@ class HomeViewController: UIViewController {
         self.homeViewModel.dataChanged = { [weak self] in
             guard let self else { return }
             
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            self.tableView.reloadData()
         }
     }
 }
@@ -97,7 +95,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .video:
             return HomeVideoCell.height
         case .recommend:
-            return HomeRecommendContainerCell.height
+            return HomeRecommendContainerCell.height(viewModel: self.homeViewModel.recommendViewModel)
         case .ranking:
             return HomeRankingContainerCell.height
         case .recentWatch:
@@ -127,10 +125,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .recommend:
             let cell = tableView.dequeueReusableCell(withIdentifier: HomeRecommendContainerCell.identifier, for: indexPath)
             
-            if let cell = cell as? HomeRecommendContainerCell,
-               let data = self.homeViewModel.home?.recommends {
+            if let cell = cell as? HomeRecommendContainerCell {
                 cell.delegate = self
-                cell.setData(data)
+                cell.setViewModel(self.homeViewModel.recommendViewModel)
             }
             
             return cell
@@ -163,6 +160,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: HomeRecommendContainerCellDelegate {
     func homeRecommendContainerCell(_ cell: HomeRecommendContainerCell, didSelectItemAt index: Int) {
         print("home recommend did select at \(index)")
+    }
+    
+    func homeRecommendContainerCellFoldChanged(_ cell: HomeRecommendContainerCell) {
+        self.tableView.reloadData()
     }
 }
 

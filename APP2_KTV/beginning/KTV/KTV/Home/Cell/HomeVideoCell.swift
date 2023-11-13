@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeVideoCell: UITableViewCell {
+class HomeVideoCell: UICollectionViewCell {
     static let identifier: String = "HomeVideoCell"
     static let height: CGFloat = 320
     
@@ -21,6 +21,8 @@ class HomeVideoCell: UITableViewCell {
     @IBOutlet weak var channelTitleLabel: UILabel!
     @IBOutlet weak var channelSubTitleLabel: UILabel!
     
+    @IBOutlet weak var likeBtn: UIButton!
+    
     private var thumbnailTask: Task<Void, Never>?
     private var channelThumbnailTask: Task<Void, Never>?
     
@@ -30,6 +32,8 @@ class HomeVideoCell: UITableViewCell {
         self.containerView.layer.cornerRadius = 10
         self.containerView.layer.borderColor = UIColor(named: "stroke-light")?.cgColor
         self.containerView.layer.borderWidth = 1
+        
+        self.channelImageView.layer.cornerRadius = 10
     }
 
     func setData(_ data: Home.Video) {
