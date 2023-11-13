@@ -18,6 +18,15 @@ class HomeRecommendItemCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
+    private var thumbnailTask: Task<Void, Never>?
+    private static let timeFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        formatter.allowedUnits = [.minute, .second]
+        
+        return formatter
+    }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,11 +38,23 @@ class HomeRecommendItemCell: UITableViewCell {
         
         self.playTimeBgView.layer.cornerRadius = 5
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.thumbnailTask?.cancel()
+        self.thumbnailTask = nil
+        self.numberLabel.text = nil
+        self.playTimeLabel.text = nil
+        self.titleLabel.text = nil
+        self.subTitleLabel.text = nil
+    }
+
+    func setData(_ data: Home.Recommend, rank: Int) {
+        self.numberLabel.text = "\(rank)"
+        self.playTimeLabel.text = Self.timeFormatter.string(from: data.playtime)
+        self.titleLabel.text = data.title
+        self.subTitleLabel.text = data.channel
+        self.thumbnailTask = self.thumbnailImageView.loadImage(url: data.imageUrl)
+    }
 }

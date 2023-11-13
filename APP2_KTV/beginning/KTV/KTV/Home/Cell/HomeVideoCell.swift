@@ -21,6 +21,9 @@ class HomeVideoCell: UITableViewCell {
     @IBOutlet weak var channelTitleLabel: UILabel!
     @IBOutlet weak var channelSubTitleLabel: UILabel!
     
+    private var thumbnailTask: Task<Void, Never>?
+    private var channelThumbnailTask: Task<Void, Never>?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,10 +32,14 @@ class HomeVideoCell: UITableViewCell {
         self.containerView.layer.borderWidth = 1
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func setData(_ data: Home.Video) {
+        self.titleLabel.text = data.title
+        self.subTitleLabel.text = data.subtitle
+        self.channelTitleLabel.text = data.channel
+        self.channelSubTitleLabel.text = data.channelDescription
+        self.hotImageView.isHidden = !data.isHot
+        
+        self.thumbnailTask = self.thumbnailImageView.loadImage(url: data.imageUrl)
+        self.channelThumbnailTask = self.channelImageView.loadImage(url: data.channelThumbnailURL)
     }
-    
 }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol HomeRecommendContainerCellDelegate: AnyObject {
+    func homeRecommendContainerCell(_ cell: HomeRecommendContainerCell, didSelectItemAt index: Int)
+}
+
 class HomeRecommendContainerCell: UITableViewCell {
     static let identifier: String = "HomeRecommendContainerCell"
     static var height: CGFloat {
@@ -20,6 +24,9 @@ class HomeRecommendContainerCell: UITableViewCell {
     @IBOutlet weak var recommendTitleView: UILabel!
     @IBOutlet weak var recommendTableView: UITableView!
     @IBOutlet weak var unfoldBtn: UIImageView!
+    private var recommends: [Home.Recommend]?
+    
+    weak var delegate: HomeRecommendContainerCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,6 +44,11 @@ class HomeRecommendContainerCell: UITableViewCell {
             forCellReuseIdentifier: HomeRecommendItemCell.identifier
         )
     }
+    
+    func setData(_ data: [Home.Recommend]) {
+        self.recommends = data
+        self.recommendTableView.reloadData()
+    }
 }
 
 extension HomeRecommendContainerCell: UITableViewDelegate, UITableViewDataSource {
@@ -45,10 +57,21 @@ extension HomeRecommendContainerCell: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        self.recommends?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: HomeRecommendItemCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeRecommendItemCell.identifier, for: indexPath)
+        
+        if let cell = cell as? HomeRecommendItemCell,
+           let data = self.recommends?[indexPath.row] {
+            cell.setData(data, rank: indexPath.row + 1)
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.homeRecommendContainerCell(self, didSelectItemAt: indexPath.row)
     }
 }
