@@ -60,6 +60,12 @@
 		A761BFCB2B03251A00263C07 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BFCA2B03251A00263C07 /* FavoriteViewController.swift */; };
 		A761BFCD2B0325A100263C07 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BFCC2B0325A100263C07 /* FavoriteViewModel.swift */; };
 		A761BFD12B03367100263C07 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BFD02B03367100263C07 /* NavigationController.swift */; };
+		A761BFEA2B03550B00263C07 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BFE82B03550B00263C07 /* VideoViewController.swift */; };
+		A761BFEB2B03550B00263C07 /* VideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A761BFE92B03550B00263C07 /* VideoViewController.xib */; };
+		A761BFEF2B03667900263C07 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BFED2B03667900263C07 /* MoreViewController.swift */; };
+		A761BFF02B03667900263C07 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A761BFEE2B03667900263C07 /* MoreViewController.xib */; };
+		A761BFF32B0368FF00263C07 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BFF12B0368FF00263C07 /* MoreTableViewCell.swift */; };
+		A761BFF42B0368FF00263C07 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A761BFF22B0368FF00263C07 /* MoreTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +143,12 @@
 		A761BFCA2B03251A00263C07 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A761BFCC2B0325A100263C07 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		A761BFD02B03367100263C07 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		A761BFE82B03550B00263C07 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		A761BFE92B03550B00263C07 /* VideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoViewController.xib; sourceTree = "<group>"; };
+		A761BFED2B03667900263C07 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		A761BFEE2B03667900263C07 /* MoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
+		A761BFF12B0368FF00263C07 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
+		A761BFF22B0368FF00263C07 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +245,8 @@
 		95E70C942AA8B93B007BAD7B /* KTV */ = {
 			isa = PBXGroup;
 			children = (
+				A761BFEC2B03666900263C07 /* More */,
+				A761BFE72B0354F500263C07 /* Video */,
 				A761BFB52B031C6F00263C07 /* My */,
 				A75B53742B01EF7800CD301B /* Util */,
 				A75B53712B01EF1400CD301B /* URLDefines */,
@@ -337,6 +351,26 @@
 				A761BFCC2B0325A100263C07 /* FavoriteViewModel.swift */,
 			);
 			path = Favorite;
+			sourceTree = "<group>";
+		};
+		A761BFE72B0354F500263C07 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				A761BFE82B03550B00263C07 /* VideoViewController.swift */,
+				A761BFE92B03550B00263C07 /* VideoViewController.xib */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		A761BFEC2B03666900263C07 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				A761BFED2B03667900263C07 /* MoreViewController.swift */,
+				A761BFEE2B03667900263C07 /* MoreViewController.xib */,
+				A761BFF12B0368FF00263C07 /* MoreTableViewCell.swift */,
+				A761BFF22B0368FF00263C07 /* MoreTableViewCell.xib */,
+			);
+			path = More;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,6 +481,7 @@
 				A75B53702B01EBE500CD301B /* favorite.json in Resources */,
 				68CA313C2AAA292900A744AF /* Color.xcassets in Resources */,
 				18BCA15A2AFD043100425F66 /* VideoListItemCell.xib in Resources */,
+				A761BFF02B03667900263C07 /* MoreViewController.xib in Resources */,
 				95E70C9F2AA8B93D007BAD7B /* Assets.xcassets in Resources */,
 				A761BFC52B031E0C00263C07 /* BookmarkCell.xib in Resources */,
 				A75B53412B01C75B00CD301B /* HomeRankingItemCell.xib in Resources */,
@@ -461,6 +496,8 @@
 				A75B536C2B01EBE500CD301B /* bookmark.json in Resources */,
 				18BCA14C2AFCF83F00425F66 /* HomeHeaderView.xib in Resources */,
 				A75B536D2B01EBE500CD301B /* video.json in Resources */,
+				A761BFEB2B03550B00263C07 /* VideoViewController.xib in Resources */,
+				A761BFF42B0368FF00263C07 /* MoreTableViewCell.xib in Resources */,
 				A75B53372B01C4BE00CD301B /* HomeRankingContainerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,14 +533,17 @@
 				A761BFB92B031C8C00263C07 /* MyViewController.swift in Sources */,
 				A75B537A2B01FCAB00CD301B /* HomeRecommendViewModel.swift in Sources */,
 				18BCA1532AFCFFB800425F66 /* HomeRecommendContainerCell.swift in Sources */,
+				A761BFEA2B03550B00263C07 /* VideoViewController.swift in Sources */,
 				A75B53362B01C4BE00CD301B /* HomeRankingContainerCell.swift in Sources */,
 				18BCA14F2AFCFB7D00425F66 /* HomeFooterView.swift in Sources */,
 				A761BFC92B0324FB00263C07 /* VideoListItem.swift in Sources */,
 				A75B53772B01EF7800CD301B /* DataLoader.swift in Sources */,
+				A761BFEF2B03667900263C07 /* MoreViewController.swift in Sources */,
 				95E70C962AA8B93B007BAD7B /* AppDelegate.swift in Sources */,
 				18703D352AFBBCB5007CAA6A /* HomeSection.swift in Sources */,
 				A75B534A2B01CF9400CD301B /* HomeRecentWatchItemCell.swift in Sources */,
 				18BCA1592AFD043100425F66 /* VideoListItemCell.swift in Sources */,
+				A761BFF32B0368FF00263C07 /* MoreTableViewCell.swift in Sources */,
 				A761BFCD2B0325A100263C07 /* FavoriteViewModel.swift in Sources */,
 				A761BFCB2B03251A00263C07 /* FavoriteViewController.swift in Sources */,
 				95E70C982AA8B93B007BAD7B /* SceneDelegate.swift in Sources */,

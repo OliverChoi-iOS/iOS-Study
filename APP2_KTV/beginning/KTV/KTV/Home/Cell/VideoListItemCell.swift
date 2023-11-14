@@ -38,6 +38,8 @@ class VideoListItemCell: UITableViewCell {
         
         self.rankBgView.layer.cornerRadius = 5
         self.rankBgView.clipsToBounds = true
+        self.rankBgView.isHidden = true
+        
         self.playTimeBgView.layer.cornerRadius = 5
     }
     
