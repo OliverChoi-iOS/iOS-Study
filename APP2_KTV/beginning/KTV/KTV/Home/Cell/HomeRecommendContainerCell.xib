@@ -5,77 +5,75 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="HomeRecommendContainerCell" customModule="KTV" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="546"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="c6G-Hm-Crh" customClass="HomeRecommendContainerCell" customModule="KTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="495"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="393" height="546"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0R9-2m-hmY">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="495"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jeq-xa-kEX">
-                        <rect key="frame" x="16" y="0.0" width="361" height="495"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgp-Uk-izf">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="495"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofv-Zp-Nbb">
-                                <rect key="frame" x="14" y="24" width="347" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm8-mx-0tN">
+                                <rect key="frame" x="14" y="24" width="379" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="f6i-9v-lL9"/>
+                                    <constraint firstAttribute="height" constant="21" id="bN5-y3-7cO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" name="main-wh"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YJ0-P4-OC5">
-                                <rect key="frame" x="26" y="78" width="309" height="347"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YUc-fA-TTW">
+                                <rect key="frame" x="26" y="78" width="341" height="375"/>
                                 <color key="backgroundColor" name="bg"/>
                                 <color key="sectionIndexBackgroundColor" name="bg"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I7b-uR-HSQ">
-                                <rect key="frame" x="0.0" y="453" width="361" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXk-kK-VM3">
+                                <rect key="frame" x="0.0" y="453" width="393" height="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="unfold"/>
                                 <connections>
-                                    <action selector="foldBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pgR-6O-wHB"/>
+                                    <action selector="foldBtnTapped:" destination="c6G-Hm-Crh" eventType="touchUpInside" id="iAv-Kd-mFL"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="bg"/>
                         <constraints>
-                            <constraint firstItem="I7b-uR-HSQ" firstAttribute="leading" secondItem="Jeq-xa-kEX" secondAttribute="leading" id="3jz-K7-YeU"/>
-                            <constraint firstItem="I7b-uR-HSQ" firstAttribute="top" secondItem="YJ0-P4-OC5" secondAttribute="bottom" constant="28" id="9FD-Eu-pnm"/>
-                            <constraint firstItem="YJ0-P4-OC5" firstAttribute="leading" secondItem="Jeq-xa-kEX" secondAttribute="leading" constant="26" id="Icy-SH-sCZ"/>
-                            <constraint firstItem="YJ0-P4-OC5" firstAttribute="top" secondItem="Ofv-Zp-Nbb" secondAttribute="bottom" constant="33" id="LtR-To-HUW"/>
-                            <constraint firstAttribute="trailing" secondItem="I7b-uR-HSQ" secondAttribute="trailing" id="ae1-Q4-ks7"/>
-                            <constraint firstAttribute="trailing" secondItem="YJ0-P4-OC5" secondAttribute="trailing" constant="26" id="e2W-lX-S1b"/>
-                            <constraint firstItem="Ofv-Zp-Nbb" firstAttribute="leading" secondItem="Jeq-xa-kEX" secondAttribute="leading" constant="14" id="f5Q-lX-DDN"/>
-                            <constraint firstAttribute="bottom" secondItem="I7b-uR-HSQ" secondAttribute="bottom" constant="20" id="lOp-7f-QaT"/>
-                            <constraint firstItem="Ofv-Zp-Nbb" firstAttribute="top" secondItem="Jeq-xa-kEX" secondAttribute="top" constant="24" id="mrc-Yt-tyo"/>
-                            <constraint firstAttribute="trailing" secondItem="Ofv-Zp-Nbb" secondAttribute="trailing" id="wjk-fl-I7K"/>
+                            <constraint firstAttribute="bottom" secondItem="BXk-kK-VM3" secondAttribute="bottom" constant="20" id="1mR-Bb-ZWQ"/>
+                            <constraint firstAttribute="trailing" secondItem="BXk-kK-VM3" secondAttribute="trailing" id="CeJ-wx-32L"/>
+                            <constraint firstItem="cm8-mx-0tN" firstAttribute="leading" secondItem="dgp-Uk-izf" secondAttribute="leading" constant="14" id="JZn-Ul-5e8"/>
+                            <constraint firstAttribute="trailing" secondItem="cm8-mx-0tN" secondAttribute="trailing" id="OKD-ef-xIn"/>
+                            <constraint firstItem="BXk-kK-VM3" firstAttribute="top" secondItem="YUc-fA-TTW" secondAttribute="bottom" id="PzX-gy-NT7"/>
+                            <constraint firstItem="cm8-mx-0tN" firstAttribute="top" secondItem="dgp-Uk-izf" secondAttribute="top" constant="24" id="QGP-x5-XFc"/>
+                            <constraint firstItem="YUc-fA-TTW" firstAttribute="top" secondItem="cm8-mx-0tN" secondAttribute="bottom" constant="33" id="QQ3-Fh-V6f"/>
+                            <constraint firstAttribute="trailing" secondItem="YUc-fA-TTW" secondAttribute="trailing" constant="26" id="hR8-DE-fhT"/>
+                            <constraint firstItem="BXk-kK-VM3" firstAttribute="leading" secondItem="dgp-Uk-izf" secondAttribute="leading" id="iA9-xa-6a6"/>
+                            <constraint firstItem="YUc-fA-TTW" firstAttribute="leading" secondItem="dgp-Uk-izf" secondAttribute="leading" constant="26" id="jl4-jI-Eff"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Jeq-xa-kEX" secondAttribute="bottom" constant="51" id="7aE-hM-zqy"/>
-                    <constraint firstItem="Jeq-xa-kEX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Fel-Pw-WAN"/>
-                    <constraint firstItem="Jeq-xa-kEX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="RRE-qw-eL5"/>
-                    <constraint firstAttribute="trailing" secondItem="Jeq-xa-kEX" secondAttribute="trailing" constant="16" id="jMQ-qQ-gIp"/>
+                    <constraint firstAttribute="bottom" secondItem="dgp-Uk-izf" secondAttribute="bottom" id="MSQ-qc-L0f"/>
+                    <constraint firstAttribute="trailing" secondItem="dgp-Uk-izf" secondAttribute="trailing" id="Rqh-rv-e6r"/>
+                    <constraint firstItem="dgp-Uk-izf" firstAttribute="top" secondItem="0R9-2m-hmY" secondAttribute="top" id="S7k-Mg-rmX"/>
+                    <constraint firstItem="dgp-Uk-izf" firstAttribute="leading" secondItem="0R9-2m-hmY" secondAttribute="leading" id="Tdr-IB-Zw2"/>
                 </constraints>
-            </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <color key="backgroundColor" name="bg"/>
+            </collectionViewCellContentView>
             <connections>
-                <outlet property="containerView" destination="Jeq-xa-kEX" id="IVL-LF-Ga1"/>
-                <outlet property="foldBtn" destination="I7b-uR-HSQ" id="8IK-VZ-OTR"/>
-                <outlet property="recommendTableView" destination="YJ0-P4-OC5" id="rvK-oc-hYq"/>
-                <outlet property="recommendTitleView" destination="Ofv-Zp-Nbb" id="9Zb-Ue-xhK"/>
+                <outlet property="containerView" destination="dgp-Uk-izf" id="XX2-dN-SZb"/>
+                <outlet property="foldBtn" destination="BXk-kK-VM3" id="6DO-YE-MaF"/>
+                <outlet property="recommendTableView" destination="YUc-fA-TTW" id="b5m-C0-rl2"/>
+                <outlet property="recommendTitleView" destination="cm8-mx-0tN" id="n6P-4u-ItG"/>
             </connections>
-            <point key="canvasLocation" x="-3.8167938931297707" y="19.366197183098592"/>
-        </tableViewCell>
+            <point key="canvasLocation" x="-4" y="451"/>
+        </collectionViewCell>
     </objects>
     <resources>
         <image name="unfold" width="24" height="13.666666984558105"/>

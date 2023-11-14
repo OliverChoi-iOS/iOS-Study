@@ -11,7 +11,7 @@ protocol HomeRecentWatchContainerCellDelegate: AnyObject {
     func homeRecentWatchContainerCell(_ cell: HomeRecentWatchContainerCell, didSelectItemAt index: Int)
 }
 
-class HomeRecentWatchContainerCell: UITableViewCell {
+class HomeRecentWatchContainerCell: UICollectionViewCell {
     static let identifier: String = "HomeRecentWatchContainerCell"
     static let height: CGFloat = 207
 

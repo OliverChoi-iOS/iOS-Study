@@ -1,5 +1,5 @@
 //
-//  HomeRecommendItemCell.swift
+//  VideoListItemCell.swift
 //  KTV
 //
 //  Created by MacBook on 2023/11/09.
@@ -7,11 +7,14 @@
 
 import UIKit
 
-class HomeRecommendItemCell: UITableViewCell {
-    static let identifier: String = "HomeRecommendItemCell"
+class VideoListItemCell: UITableViewCell {
+    static let identifier: String = "VideoListItemCell"
     static let height: CGFloat = 72
     
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var thumbnailContainerView: UIView!
+    @IBOutlet weak var rankBgView: UIView!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var playTimeBgView: UIView!
     @IBOutlet weak var playTimeLabel: UILabel!
@@ -33,9 +36,8 @@ class HomeRecommendItemCell: UITableViewCell {
         
         self.thumbnailContainerView.layer.cornerRadius = 5
         
-        self.numberLabel.layer.cornerRadius = 5
-        self.numberLabel.clipsToBounds = true
-        
+        self.rankBgView.layer.cornerRadius = 5
+        self.rankBgView.clipsToBounds = true
         self.playTimeBgView.layer.cornerRadius = 5
     }
     
@@ -44,17 +46,29 @@ class HomeRecommendItemCell: UITableViewCell {
         
         self.thumbnailTask?.cancel()
         self.thumbnailTask = nil
+        self.rankBgView.isHidden = true
         self.numberLabel.text = nil
         self.playTimeLabel.text = nil
         self.titleLabel.text = nil
         self.subTitleLabel.text = nil
+        
+        self.leadingConstraint.constant = 0
+        self.trailingConstraint.constant = 0
     }
 
-    func setData(_ data: Home.Recommend, rank: Int) {
-        self.numberLabel.text = "\(rank)"
+    func setData(_ data: VideoListItem, rank: Int? = nil) {
+        self.rankBgView.isHidden = rank == nil
+        if let rank {
+            self.numberLabel.text = "\(rank)"
+        }
         self.playTimeLabel.text = Self.timeFormatter.string(from: data.playtime)
         self.titleLabel.text = data.title
         self.subTitleLabel.text = data.channel
         self.thumbnailTask = self.thumbnailImageView.loadImage(url: data.imageUrl)
+    }
+    
+    func setHorizontalPadding(_ padding: CGFloat) {
+        self.leadingConstraint.constant = padding
+        self.trailingConstraint.constant = padding
     }
 }

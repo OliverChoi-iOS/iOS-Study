@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeHeaderView: UICollectionReusableView {
-    static let identifier: String = "HomeHeaderCell"
+    static let identifier: String = "HomeHeaderView"
     static let height: CGFloat = 66
     
     override func awakeFromNib() {

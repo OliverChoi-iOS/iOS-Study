@@ -12,13 +12,12 @@ protocol HomeRecommendContainerCellDelegate: AnyObject {
     func homeRecommendContainerCellFoldChanged(_ cell: HomeRecommendContainerCell)
 }
 
-class HomeRecommendContainerCell: UITableViewCell {
+class HomeRecommendContainerCell: UICollectionViewCell {
     static let identifier: String = "HomeRecommendContainerCell"
     static func height(viewModel: HomeRecommendViewModel) -> CGFloat {
         let top: CGFloat = 84 - 6 // top spacing - cell item padding
         let bottom: CGFloat = 68 - 6 // bottom spacing - cell item padding
-        let footerInset: CGFloat = 51 // container cell ~ footer 까지의 여백
-        return HomeRecommendItemCell.height * CGFloat(viewModel.itemCount) + top + bottom + footerInset
+        return VideoListItemCell.height * CGFloat(viewModel.itemCount) + top + bottom
     }
     
     @IBOutlet weak var containerView: UIView!
@@ -26,7 +25,7 @@ class HomeRecommendContainerCell: UITableViewCell {
     @IBOutlet weak var recommendTableView: UITableView!
     @IBOutlet weak var foldBtn: UIButton!
     
-    private var recommends: [Home.Recommend]?
+    private var recommends: [VideoListItem]?
     
     weak var delegate: HomeRecommendContainerCellDelegate?
     private var viewModel: HomeRecommendViewModel?
@@ -38,17 +37,17 @@ class HomeRecommendContainerCell: UITableViewCell {
         self.containerView.layer.borderColor = UIColor(named: "stroke-light")?.cgColor
         self.containerView.layer.borderWidth = 1
         
-        self.recommendTableView.rowHeight = HomeRecommendItemCell.height
+        self.recommendTableView.rowHeight = VideoListItemCell.height
         self.recommendTableView.delegate = self
         self.recommendTableView.dataSource = self
         
         self.recommendTableView.register(
-            UINib(nibName: HomeRecommendItemCell.identifier, bundle: nil),
-            forCellReuseIdentifier: HomeRecommendItemCell.identifier
+            UINib(nibName: VideoListItemCell.identifier, bundle: nil),
+            forCellReuseIdentifier: VideoListItemCell.identifier
         )
     }
     
-    func setData(_ data: [Home.Recommend]) {
+    func setData(_ data: [VideoListItem]) {
         self.recommends = data
         self.recommendTableView.reloadData()
     }
@@ -83,13 +82,13 @@ extension HomeRecommendContainerCell: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.viewModel?.recommends?.count ?? 0
+        self.viewModel?.itemCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: HomeRecommendItemCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: VideoListItemCell.identifier, for: indexPath)
         
-        if let cell = cell as? HomeRecommendItemCell,
+        if let cell = cell as? VideoListItemCell,
            let data = self.viewModel?.recommends?[indexPath.row] {
             cell.setData(data, rank: indexPath.row + 1)
         }
