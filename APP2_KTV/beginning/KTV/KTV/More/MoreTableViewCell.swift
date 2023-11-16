@@ -8,16 +8,28 @@
 import UIKit
 
 class MoreTableViewCell: UITableViewCell {
+    static let identifier: String = "MoreTableViewCell"
+    static let height: CGFloat = 48
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var rightTextLabel: UILabel!
+    @IBOutlet weak var seperatorView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.titleLabel.text = nil
+        self.rightTextLabel.text = nil
+    }
+
+    func setData(_ data: MoreItem, isSeperatorHidden: Bool) {
+        self.titleLabel.text = data.title
+        self.rightTextLabel.text = data.rightText
+        self.seperatorView.isHidden = isSeperatorHidden
+    }
 }

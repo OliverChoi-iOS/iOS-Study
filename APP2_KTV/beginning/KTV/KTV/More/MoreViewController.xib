@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoreViewController" customModule="KTV" customModuleProvider="target">
             <connections>
+                <outlet property="headerView" destination="w3P-8D-gDQ" id="iWl-Ee-d5p"/>
                 <outlet property="tableView" destination="a9a-go-DJ4" id="JDD-cg-Gln"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -51,7 +52,7 @@
                         <constraint firstItem="Mwr-SL-s9i" firstAttribute="centerX" secondItem="w3P-8D-gDQ" secondAttribute="centerX" id="xkz-GT-C2S"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a9a-go-DJ4">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a9a-go-DJ4">
                     <rect key="frame" x="0.0" y="619" width="393" height="233"/>
                     <color key="backgroundColor" name="bg"/>
                     <constraints>
@@ -62,11 +63,12 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="bg-controlpannel"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="a9a-go-DJ4" secondAttribute="trailing" id="5zi-gs-H88"/>
+                <constraint firstItem="a9a-go-DJ4" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="KWa-Jd-Xom"/>
+                <constraint firstItem="w3P-8D-gDQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Odb-7q-1r3"/>
+                <constraint firstItem="w3P-8D-gDQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Oke-yE-aa1"/>
                 <constraint firstAttribute="bottom" secondItem="a9a-go-DJ4" secondAttribute="bottom" id="PXI-BW-k2c"/>
                 <constraint firstItem="w3P-8D-gDQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Svm-Oy-1Uy"/>
                 <constraint firstItem="a9a-go-DJ4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ymc-IN-tfl"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="w3P-8D-gDQ" secondAttribute="trailing" id="rFv-my-yob"/>
                 <constraint firstItem="a9a-go-DJ4" firstAttribute="top" secondItem="w3P-8D-gDQ" secondAttribute="bottom" id="v7o-Rc-wyZ"/>
             </constraints>
             <point key="canvasLocation" x="-1" y="21"/>

@@ -16,6 +16,8 @@
                 <outlet property="favoriteBtn" destination="c5V-Md-8op" id="Jye-xf-Fr4"/>
                 <outlet property="playBtn" destination="3ZC-wp-Wxe" id="rNV-Nr-HeY"/>
                 <outlet property="playCountLabel" destination="9ef-Ea-H5J" id="Rxd-ZP-j3M"/>
+                <outlet property="playerView" destination="5aC-9v-gyc" id="rf6-Mg-wQX"/>
+                <outlet property="portraitControlPanel" destination="VM0-kd-9sH" id="qAf-hK-Orc"/>
                 <outlet property="recommendTableView" destination="QiS-rF-jS4" id="Xqb-Yd-QEa"/>
                 <outlet property="tableViewHeightConstraint" destination="8qx-De-aIt" id="17P-t5-F98"/>
                 <outlet property="titleLabel" destination="77G-1f-rSF" id="Z5n-sv-FDo"/>
@@ -31,11 +33,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vr7-9h-PdF" userLabel="VideoContainerView">
                     <rect key="frame" x="0.0" y="59" width="393" height="221"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5aC-9v-gyc">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5aC-9v-gyc" customClass="PlayerView" customModule="KTV" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="221"/>
                             <color key="backgroundColor" name="d-text-deep"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VM0-kd-9sH">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VM0-kd-9sH">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="221"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iig-l8-QvX">
@@ -58,6 +60,9 @@
                                     </constraints>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" image="more"/>
+                                    <connections>
+                                        <action selector="moreDidTap:" destination="-1" eventType="touchUpInside" id="nrc-pX-hb9"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZC-wp-Wxe">
                                     <rect key="frame" x="176.66666666666666" y="90.666666666666657" width="40" height="40"/>

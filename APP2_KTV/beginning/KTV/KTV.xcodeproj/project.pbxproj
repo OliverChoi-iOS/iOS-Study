@@ -66,6 +66,10 @@
 		A761BFF02B03667900263C07 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A761BFEE2B03667900263C07 /* MoreViewController.xib */; };
 		A761BFF32B0368FF00263C07 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BFF12B0368FF00263C07 /* MoreTableViewCell.swift */; };
 		A761BFF42B0368FF00263C07 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A761BFF22B0368FF00263C07 /* MoreTableViewCell.xib */; };
+		A77E62752B059DF500ABC0A0 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77E62742B059DF500ABC0A0 /* MoreViewModel.swift */; };
+		A77E62772B05ABF400ABC0A0 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77E62762B05ABF400ABC0A0 /* Video.swift */; };
+		A77E62792B05AC1300ABC0A0 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77E62782B05AC1300ABC0A0 /* VideoViewModel.swift */; };
+		A77E627B2B05B03200ABC0A0 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77E627A2B05B03200ABC0A0 /* PlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +153,10 @@
 		A761BFEE2B03667900263C07 /* MoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
 		A761BFF12B0368FF00263C07 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
 		A761BFF22B0368FF00263C07 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
+		A77E62742B059DF500ABC0A0 /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
+		A77E62762B05ABF400ABC0A0 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		A77E62782B05AC1300ABC0A0 /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
+		A77E627A2B05B03200ABC0A0 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +298,7 @@
 				A761BFBE2B031D8400263C07 /* Bookmark.swift */,
 				A761BFC02B031D8D00263C07 /* Favorite.swift */,
 				A761BFC82B0324FB00263C07 /* VideoListItem.swift */,
+				A77E62762B05ABF400ABC0A0 /* Video.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -358,6 +367,8 @@
 			children = (
 				A761BFE82B03550B00263C07 /* VideoViewController.swift */,
 				A761BFE92B03550B00263C07 /* VideoViewController.xib */,
+				A77E62782B05AC1300ABC0A0 /* VideoViewModel.swift */,
+				A77E627A2B05B03200ABC0A0 /* PlayerView.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -369,6 +380,7 @@
 				A761BFEE2B03667900263C07 /* MoreViewController.xib */,
 				A761BFF12B0368FF00263C07 /* MoreTableViewCell.swift */,
 				A761BFF22B0368FF00263C07 /* MoreTableViewCell.xib */,
+				A77E62742B059DF500ABC0A0 /* MoreViewModel.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -536,11 +548,14 @@
 				A761BFEA2B03550B00263C07 /* VideoViewController.swift in Sources */,
 				A75B53362B01C4BE00CD301B /* HomeRankingContainerCell.swift in Sources */,
 				18BCA14F2AFCFB7D00425F66 /* HomeFooterView.swift in Sources */,
+				A77E62772B05ABF400ABC0A0 /* Video.swift in Sources */,
 				A761BFC92B0324FB00263C07 /* VideoListItem.swift in Sources */,
 				A75B53772B01EF7800CD301B /* DataLoader.swift in Sources */,
 				A761BFEF2B03667900263C07 /* MoreViewController.swift in Sources */,
+				A77E627B2B05B03200ABC0A0 /* PlayerView.swift in Sources */,
 				95E70C962AA8B93B007BAD7B /* AppDelegate.swift in Sources */,
 				18703D352AFBBCB5007CAA6A /* HomeSection.swift in Sources */,
+				A77E62752B059DF500ABC0A0 /* MoreViewModel.swift in Sources */,
 				A75B534A2B01CF9400CD301B /* HomeRecentWatchItemCell.swift in Sources */,
 				18BCA1592AFD043100425F66 /* VideoListItemCell.swift in Sources */,
 				A761BFF32B0368FF00263C07 /* MoreTableViewCell.swift in Sources */,
@@ -551,6 +566,7 @@
 				A761BFD12B03367100263C07 /* NavigationController.swift in Sources */,
 				18703D392AFBBF81007CAA6A /* TabBarController.swift in Sources */,
 				A761BFC12B031D8D00263C07 /* Favorite.swift in Sources */,
+				A77E62792B05AC1300ABC0A0 /* VideoViewModel.swift in Sources */,
 				A761BFC72B03200300263C07 /* BookmarkViewModel.swift in Sources */,
 				18703D322AFBA9AA007CAA6A /* HomeVideoCell.swift in Sources */,
 				A75B53632B01E13100CD301B /* Home.swift in Sources */,
