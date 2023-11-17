@@ -22,14 +22,6 @@ class VideoListItemCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     private var thumbnailTask: Task<Void, Never>?
-    private static let timeFormatter: DateComponentsFormatter = {
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .positional
-        formatter.zeroFormattingBehavior = .pad
-        formatter.allowedUnits = [.minute, .second]
-        
-        return formatter
-    }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,7 +55,7 @@ class VideoListItemCell: UITableViewCell {
         if let rank {
             self.numberLabel.text = "\(rank)"
         }
-        self.playTimeLabel.text = Self.timeFormatter.string(from: data.playtime)
+        self.playTimeLabel.text = DateComponentsFormatter.playTimeFormatter.string(from: data.playtime)
         self.titleLabel.text = data.title
         self.subTitleLabel.text = data.channel
         self.thumbnailTask = self.thumbnailImageView.loadImage(url: data.imageUrl)

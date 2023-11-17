@@ -41,14 +41,28 @@ class MoreViewController: UIViewController {
         self.setupCornerRadius()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        self.setupCornerRadius()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate { _ in
+            self.setupCornerRadius()
+        }
+        
+        super.viewWillTransition(to: size, with: coordinator)
+    }
+    
     @IBAction func closeDidTap(_ sender: Any) {
         self.dismiss(animated: false)
     }
     
     private func setupCornerRadius() {
         let path = UIBezierPath(
-             roundedRect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.headerView.bounds.height),
-//            roundedRect: self.headerView.bounds,
+//             roundedRect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.headerView.bounds.height),
+            roundedRect: self.headerView.bounds,
             byRoundingCorners: [.topLeft, .topRight],
             cornerRadii: CGSize(width: 13, height: 13)
         )

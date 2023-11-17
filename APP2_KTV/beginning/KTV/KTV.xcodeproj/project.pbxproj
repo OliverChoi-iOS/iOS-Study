@@ -66,6 +66,8 @@
 		A761BFF02B03667900263C07 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A761BFEE2B03667900263C07 /* MoreViewController.xib */; };
 		A761BFF32B0368FF00263C07 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BFF12B0368FF00263C07 /* MoreTableViewCell.swift */; };
 		A761BFF42B0368FF00263C07 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A761BFF22B0368FF00263C07 /* MoreTableViewCell.xib */; };
+		A76CE6392B0739DC0025A9CB /* SeekbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76CE6382B0739DC0025A9CB /* SeekbarView.swift */; };
+		A76CE63C2B073F030025A9CB /* DateComponentsFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76CE63B2B073F030025A9CB /* DateComponentsFormatterExtension.swift */; };
 		A77E62752B059DF500ABC0A0 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77E62742B059DF500ABC0A0 /* MoreViewModel.swift */; };
 		A77E62772B05ABF400ABC0A0 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77E62762B05ABF400ABC0A0 /* Video.swift */; };
 		A77E62792B05AC1300ABC0A0 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77E62782B05AC1300ABC0A0 /* VideoViewModel.swift */; };
@@ -153,6 +155,8 @@
 		A761BFEE2B03667900263C07 /* MoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
 		A761BFF12B0368FF00263C07 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
 		A761BFF22B0368FF00263C07 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
+		A76CE6382B0739DC0025A9CB /* SeekbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekbarView.swift; sourceTree = "<group>"; };
+		A76CE63B2B073F030025A9CB /* DateComponentsFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateComponentsFormatterExtension.swift; sourceTree = "<group>"; };
 		A77E62742B059DF500ABC0A0 /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
 		A77E62762B05ABF400ABC0A0 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		A77E62782B05AC1300ABC0A0 /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 		95E70C942AA8B93B007BAD7B /* KTV */ = {
 			isa = PBXGroup;
 			children = (
+				A76CE63A2B073EEE0025A9CB /* Extension */,
 				A761BFEC2B03666900263C07 /* More */,
 				A761BFE72B0354F500263C07 /* Video */,
 				A761BFB52B031C6F00263C07 /* My */,
@@ -369,6 +374,7 @@
 				A761BFE92B03550B00263C07 /* VideoViewController.xib */,
 				A77E62782B05AC1300ABC0A0 /* VideoViewModel.swift */,
 				A77E627A2B05B03200ABC0A0 /* PlayerView.swift */,
+				A76CE6382B0739DC0025A9CB /* SeekbarView.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -383,6 +389,14 @@
 				A77E62742B059DF500ABC0A0 /* MoreViewModel.swift */,
 			);
 			path = More;
+			sourceTree = "<group>";
+		};
+		A76CE63A2B073EEE0025A9CB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A76CE63B2B073F030025A9CB /* DateComponentsFormatterExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -549,6 +563,7 @@
 				A75B53362B01C4BE00CD301B /* HomeRankingContainerCell.swift in Sources */,
 				18BCA14F2AFCFB7D00425F66 /* HomeFooterView.swift in Sources */,
 				A77E62772B05ABF400ABC0A0 /* Video.swift in Sources */,
+				A76CE63C2B073F030025A9CB /* DateComponentsFormatterExtension.swift in Sources */,
 				A761BFC92B0324FB00263C07 /* VideoListItem.swift in Sources */,
 				A75B53772B01EF7800CD301B /* DataLoader.swift in Sources */,
 				A761BFEF2B03667900263C07 /* MoreViewController.swift in Sources */,
@@ -559,6 +574,7 @@
 				A75B534A2B01CF9400CD301B /* HomeRecentWatchItemCell.swift in Sources */,
 				18BCA1592AFD043100425F66 /* VideoListItemCell.swift in Sources */,
 				A761BFF32B0368FF00263C07 /* MoreTableViewCell.swift in Sources */,
+				A76CE6392B0739DC0025A9CB /* SeekbarView.swift in Sources */,
 				A761BFCD2B0325A100263C07 /* FavoriteViewModel.swift in Sources */,
 				A761BFCB2B03251A00263C07 /* FavoriteViewController.swift in Sources */,
 				95E70C982AA8B93B007BAD7B /* SceneDelegate.swift in Sources */,
