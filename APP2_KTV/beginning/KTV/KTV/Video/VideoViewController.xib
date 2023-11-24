@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="channelNameLabel" destination="XVW-j2-OKt" id="DDi-Zi-dm7"/>
                 <outlet property="channelThumbnailImageView" destination="3e3-Lz-y1h" id="L0L-tE-K3K"/>
+                <outlet property="chattingView" destination="jMU-ph-Hh5" id="Jgd-4h-1Vm"/>
                 <outlet property="favoriteBtn" destination="c5V-Md-8op" id="Jye-xf-Fr4"/>
                 <outlet property="landscapeControlPanel" destination="l5h-Z5-rsV" id="XZc-vF-bSN"/>
                 <outlet property="landscapePlayBtn" destination="Hq0-QN-Wk1" id="pMO-Um-6L8"/>
@@ -481,17 +482,104 @@
                     <viewLayoutGuide key="contentLayoutGuide" id="chM-TS-LHb"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="Zan-DJ-XuR"/>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMU-ph-Hh5" customClass="ChattingView" customModule="KTV" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="280" width="393" height="572"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uR2-Qq-5WJ">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="67"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="라이브 채팅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkN-m5-GF9">
+                                    <rect key="frame" x="30" y="23" width="78" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                    <color key="textColor" name="main-wh"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0os-Q4-Dut">
+                                    <rect key="frame" x="323" y="13.666666666666686" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="Y5P-bv-cdT"/>
+                                        <constraint firstAttribute="width" constant="40" id="lnx-fa-9ip"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="small_close"/>
+                                    <connections>
+                                        <action selector="closeDidTap:" destination="jMU-ph-Hh5" eventType="touchUpInside" id="dJd-Jb-rz9"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="bkN-m5-GF9" firstAttribute="leading" secondItem="uR2-Qq-5WJ" secondAttribute="leading" constant="30" id="MkL-A6-LpU"/>
+                                <constraint firstAttribute="height" constant="67" id="Vta-hl-d9e"/>
+                                <constraint firstItem="bkN-m5-GF9" firstAttribute="centerY" secondItem="uR2-Qq-5WJ" secondAttribute="centerY" id="a6g-yK-AFQ"/>
+                                <constraint firstItem="0os-Q4-Dut" firstAttribute="centerY" secondItem="uR2-Qq-5WJ" secondAttribute="centerY" id="fxK-pZ-qLX"/>
+                                <constraint firstAttribute="trailing" secondItem="0os-Q4-Dut" secondAttribute="trailing" constant="30" id="vs8-eW-Ay3"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zqo-Ny-bkD">
+                            <rect key="frame" x="0.0" y="458" width="393" height="80"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="chat text" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qn7-jQ-Bu7">
+                                    <rect key="frame" x="25" y="7" width="343" height="34"/>
+                                    <color key="backgroundColor" name="chat-text"/>
+                                    <color key="textColor" name="chat-text"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="qn7-jQ-Bu7" secondAttribute="trailing" constant="25" id="HB8-Zr-c0a"/>
+                                <constraint firstItem="qn7-jQ-Bu7" firstAttribute="top" secondItem="Zqo-Ny-bkD" secondAttribute="top" constant="7" id="R4a-dH-njT"/>
+                                <constraint firstItem="qn7-jQ-Bu7" firstAttribute="leading" secondItem="Zqo-Ny-bkD" secondAttribute="leading" constant="25" id="Y4J-QH-Igu"/>
+                                <constraint firstAttribute="height" constant="80" id="gDO-QQ-pzP"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8Mp-sf-X4X">
+                            <rect key="frame" x="0.0" y="67" width="393" height="391"/>
+                            <color key="backgroundColor" name="bk-origin"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g7C-4Y-dDF">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="LQL-iX-wvZ"/>
+                    <keyboardLayoutGuide key="keyboard" id="31b-Wi-rMK"/>
+                    <color key="backgroundColor" name="bk-origin"/>
+                    <constraints>
+                        <constraint firstItem="8Mp-sf-X4X" firstAttribute="top" secondItem="uR2-Qq-5WJ" secondAttribute="bottom" id="0fB-Vm-CcA"/>
+                        <constraint firstItem="uR2-Qq-5WJ" firstAttribute="top" secondItem="jMU-ph-Hh5" secondAttribute="top" id="EmB-4b-1G4"/>
+                        <constraint firstItem="LQL-iX-wvZ" firstAttribute="bottom" secondItem="Zqo-Ny-bkD" secondAttribute="bottom" priority="750" id="IpU-29-br2"/>
+                        <constraint firstItem="31b-Wi-rMK" firstAttribute="top" secondItem="Zqo-Ny-bkD" secondAttribute="bottom" id="JlP-vQ-e2Q"/>
+                        <constraint firstItem="uR2-Qq-5WJ" firstAttribute="leading" secondItem="jMU-ph-Hh5" secondAttribute="leading" id="cf2-Gc-eb6"/>
+                        <constraint firstAttribute="trailing" secondItem="uR2-Qq-5WJ" secondAttribute="trailing" id="ge9-QA-JFc"/>
+                        <constraint firstItem="Zqo-Ny-bkD" firstAttribute="leading" secondItem="jMU-ph-Hh5" secondAttribute="leading" id="hZf-Qc-D5J"/>
+                        <constraint firstAttribute="trailing" secondItem="Zqo-Ny-bkD" secondAttribute="trailing" id="kPb-rb-l5L"/>
+                        <constraint firstItem="8Mp-sf-X4X" firstAttribute="leading" secondItem="jMU-ph-Hh5" secondAttribute="leading" id="rIR-IZ-LL2"/>
+                        <constraint firstItem="Zqo-Ny-bkD" firstAttribute="top" secondItem="8Mp-sf-X4X" secondAttribute="bottom" id="wYr-Mp-Ft6"/>
+                        <constraint firstAttribute="trailing" secondItem="8Mp-sf-X4X" secondAttribute="trailing" id="xXW-Ay-OjE"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="collectionView" destination="8Mp-sf-X4X" id="gXC-iA-eH6"/>
+                        <outlet property="textField" destination="qn7-jQ-Bu7" id="CzO-3X-kFp"/>
+                    </connections>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="bk-origin"/>
             <constraints>
+                <constraint firstItem="jMU-ph-Hh5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5Z2-YI-Aq1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vqx-oT-Vcz" secondAttribute="trailing" id="9LG-2P-TfX"/>
                 <constraint firstAttribute="bottom" secondItem="vr7-9h-PdF" secondAttribute="bottom" id="JWN-Si-X8Z"/>
                 <constraint firstItem="vr7-9h-PdF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="MvN-M0-hBE"/>
                 <constraint firstItem="Vqx-oT-Vcz" firstAttribute="top" secondItem="vr7-9h-PdF" secondAttribute="bottom" id="Phn-ET-iFt"/>
                 <constraint firstItem="vr7-9h-PdF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="V4R-AZ-Pl4"/>
                 <constraint firstAttribute="bottom" secondItem="Vqx-oT-Vcz" secondAttribute="bottom" id="V5M-Av-Orp"/>
+                <constraint firstItem="jMU-ph-Hh5" firstAttribute="top" secondItem="vr7-9h-PdF" secondAttribute="bottom" id="bhv-H4-t7C"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vr7-9h-PdF" secondAttribute="trailing" id="g26-YD-has"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jMU-ph-Hh5" secondAttribute="trailing" id="rbi-w7-Jym"/>
+                <constraint firstAttribute="bottom" secondItem="jMU-ph-Hh5" secondAttribute="bottom" id="wOR-3k-0kU"/>
                 <constraint firstItem="Vqx-oT-Vcz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xon-dU-v7y"/>
             </constraints>
             <variation key="default">
@@ -528,6 +616,9 @@
         </namedColor>
         <namedColor name="bk-origin">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="chat-text">
+            <color red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="d-text-deep">
             <color red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

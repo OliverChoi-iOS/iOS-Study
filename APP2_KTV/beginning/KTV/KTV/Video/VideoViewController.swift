@@ -21,6 +21,12 @@ class VideoViewController: UIViewController {
     @IBOutlet weak var landscapePlayTimeLabel: UILabel!
     @IBOutlet weak var seekbarView: SeekbarView!
     
+    var isLiveMode: Bool = false
+    
+    // MARK: - chat
+    @IBOutlet weak var chattingView: ChattingView!
+    
+    
     // MARK: - scroll
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -69,12 +75,14 @@ class VideoViewController: UIViewController {
         
         self.playerView.delegate = self
         self.seekbarView.delegate = self
+        self.chattingView.delegate = self
 
         self.channelThumbnailImageView.layer.cornerRadius = 14
         self.setupRecommendTableView()
         
         self.bindViewModel()
         self.videoViewModel.request()
+        self.chattingView.isHidden = !self.isLiveMode
     }
     
     // device 회전 감지
@@ -112,6 +120,9 @@ class VideoViewController: UIViewController {
     }
     
     @IBAction func commentDidTap(_ sender: Any) {
+        guard self.isLiveMode else { return }
+        
+        self.chattingView.isHidden = false
     }
     
     private func updatePlayButton(isPlaying: Bool) {
@@ -222,6 +233,12 @@ extension VideoViewController: PlayerViewDelegate {
 extension VideoViewController: SeekbarViewDelegate {
     func seekbar(_ seekbar: SeekbarView, seekToPercent percent: Double) {
         self.playerView.seek(to: percent)
+    }
+}
+
+extension VideoViewController: ChattingViewDelegate {
+    func liveChattingViewCloseDidTap(_ chattingView: ChattingView) {
+        self.chattingView.isHidden = true
     }
 }
 
