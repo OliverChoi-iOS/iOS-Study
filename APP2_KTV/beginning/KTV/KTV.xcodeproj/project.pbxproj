@@ -80,6 +80,9 @@
 		A77B65942B1073030010AC99 /* LiveChattingMyMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77B65902B1073030010AC99 /* LiveChattingMyMessageCollectionViewCell.swift */; };
 		A77B65952B1073030010AC99 /* LiveChattingMessageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77B65912B1073030010AC99 /* LiveChattingMessageCollectionViewCell.xib */; };
 		A77B65962B1073030010AC99 /* LiveChattingMyMessageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77B65922B1073030010AC99 /* LiveChattingMyMessageCollectionViewCell.xib */; };
+		A77DA39C2B1465AA00E4EC49 /* HomeRankingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DA39A2B1465AA00E4EC49 /* HomeRankingHeaderView.swift */; };
+		A77DA39D2B1465AA00E4EC49 /* HomeRankingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77DA39B2B1465AA00E4EC49 /* HomeRankingHeaderView.xib */; };
+		A77DA39F2B147F4B00E4EC49 /* VideoViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DA39E2B147F4B00E4EC49 /* VideoViewControllerContainer.swift */; };
 		A77E62752B059DF500ABC0A0 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77E62742B059DF500ABC0A0 /* MoreViewModel.swift */; };
 		A77E62772B05ABF400ABC0A0 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77E62762B05ABF400ABC0A0 /* Video.swift */; };
 		A77E62792B05AC1300ABC0A0 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77E62782B05AC1300ABC0A0 /* VideoViewModel.swift */; };
@@ -181,6 +184,9 @@
 		A77B65902B1073030010AC99 /* LiveChattingMyMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveChattingMyMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		A77B65912B1073030010AC99 /* LiveChattingMessageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LiveChattingMessageCollectionViewCell.xib; sourceTree = "<group>"; };
 		A77B65922B1073030010AC99 /* LiveChattingMyMessageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LiveChattingMyMessageCollectionViewCell.xib; sourceTree = "<group>"; };
+		A77DA39A2B1465AA00E4EC49 /* HomeRankingHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRankingHeaderView.swift; sourceTree = "<group>"; };
+		A77DA39B2B1465AA00E4EC49 /* HomeRankingHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeRankingHeaderView.xib; sourceTree = "<group>"; };
+		A77DA39E2B147F4B00E4EC49 /* VideoViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewControllerContainer.swift; sourceTree = "<group>"; };
 		A77E62742B059DF500ABC0A0 /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
 		A77E62762B05ABF400ABC0A0 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		A77E62782B05AC1300ABC0A0 /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
@@ -246,6 +252,8 @@
 				18BCA1522AFCFFB800425F66 /* HomeRecommendContainerCell.xib */,
 				18BCA1572AFD043100425F66 /* VideoListItemCell.swift */,
 				18BCA1582AFD043100425F66 /* VideoListItemCell.xib */,
+				A77DA39A2B1465AA00E4EC49 /* HomeRankingHeaderView.swift */,
+				A77DA39B2B1465AA00E4EC49 /* HomeRankingHeaderView.xib */,
 				A75B53342B01C4BE00CD301B /* HomeRankingContainerCell.swift */,
 				A75B53352B01C4BE00CD301B /* HomeRankingContainerCell.xib */,
 				A75B533E2B01C75B00CD301B /* HomeRankingItemCell.swift */,
@@ -402,6 +410,7 @@
 				A77E62782B05AC1300ABC0A0 /* VideoViewModel.swift */,
 				A77E627A2B05B03200ABC0A0 /* PlayerView.swift */,
 				A76CE6382B0739DC0025A9CB /* SeekbarView.swift */,
+				A77DA39E2B147F4B00E4EC49 /* VideoViewControllerContainer.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -580,6 +589,7 @@
 				A761BFEB2B03550B00263C07 /* VideoViewController.xib in Resources */,
 				A761BFF42B0368FF00263C07 /* MoreTableViewCell.xib in Resources */,
 				A75B53372B01C4BE00CD301B /* HomeRankingContainerCell.xib in Resources */,
+				A77DA39D2B1465AA00E4EC49 /* HomeRankingHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +629,7 @@
 				A75B53362B01C4BE00CD301B /* HomeRankingContainerCell.swift in Sources */,
 				18BCA14F2AFCFB7D00425F66 /* HomeFooterView.swift in Sources */,
 				A77E62772B05ABF400ABC0A0 /* Video.swift in Sources */,
+				A77DA39F2B147F4B00E4EC49 /* VideoViewControllerContainer.swift in Sources */,
 				A76CE63C2B073F030025A9CB /* DateComponentsFormatterExtension.swift in Sources */,
 				A761BFC92B0324FB00263C07 /* VideoListItem.swift in Sources */,
 				A76CE6452B074EAF0025A9CB /* Live.swift in Sources */,
@@ -647,6 +658,7 @@
 				18703D392AFBBF81007CAA6A /* TabBarController.swift in Sources */,
 				A761BFC12B031D8D00263C07 /* Favorite.swift in Sources */,
 				A77E62792B05AC1300ABC0A0 /* VideoViewModel.swift in Sources */,
+				A77DA39C2B1465AA00E4EC49 /* HomeRankingHeaderView.swift in Sources */,
 				A761BFC72B03200300263C07 /* BookmarkViewModel.swift in Sources */,
 				18703D322AFBA9AA007CAA6A /* HomeVideoCell.swift in Sources */,
 				A75B53632B01E13100CD301B /* Home.swift in Sources */,
@@ -829,7 +841,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5K3W33ZZ68;
+				DEVELOPMENT_TEAM = YC94UC2KCQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KTV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -842,7 +854,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fastcampus.KTV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastcampus.KTV.oliver.01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -857,7 +869,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5K3W33ZZ68;
+				DEVELOPMENT_TEAM = YC94UC2KCQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KTV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -870,7 +882,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fastcampus.KTV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastcampus.KTV.oliver.01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

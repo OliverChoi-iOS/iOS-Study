@@ -9,6 +9,7 @@ import UIKit
 
 class HomeRecentWatchItemCell: UICollectionViewCell {
     static let identifier: String = "HomeRecentWatchItemCell"
+    static let size: CGSize = .init(width: 80, height: 140)
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var thumbnailContainerView: UIView!

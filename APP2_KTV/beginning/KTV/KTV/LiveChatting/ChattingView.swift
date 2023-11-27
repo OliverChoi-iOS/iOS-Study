@@ -35,7 +35,12 @@ class ChattingView: UIView {
     }
     
     @IBAction func closeDidTap(_ sender: Any) {
+        self.textField.resignFirstResponder()
         self.delegate?.liveChattingViewCloseDidTap(self)
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: Any) {
+        self.textField.resignFirstResponder()
     }
     
     private func bindViewModel() {
@@ -56,7 +61,7 @@ class ChattingView: UIView {
     }
     
     private func scrollToLatestIfNeeded() {
-        let isBottomOffset = self.collectionView.bounds.maxY >= self.collectionView.contentSize.height
+        let isBottomOffset = self.collectionView.bounds.maxY >= self.collectionView.contentSize.height - 200
         let isLastMessageMine = self.viewModel.messages.last?.isMine == true
         
         if isBottomOffset || isLastMessageMine {

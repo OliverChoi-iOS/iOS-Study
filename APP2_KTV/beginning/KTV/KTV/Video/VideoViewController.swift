@@ -6,8 +6,21 @@
 //
 
 import UIKit
+import AVKit
+
+protocol VideoViewControllerDelegate: AnyObject {
+    func videoViewController(
+        _ videoViewController: VideoViewController,
+        yPositionForMinimizeView height: CGFloat
+    ) -> CGFloat
+    
+    func videoViewControllerDidMinimize(_ videoViewController: VideoViewController)
+    func videoViewControllerNeesdMaximize(_ videoViewController: VideoViewController)
+    func videoViewControllerDidTapClose(_ videoViewController: VideoViewController)
+}
 
 class VideoViewController: UIViewController {
+    private let chattingHiddenBottomConstraint: CGFloat = -500
 
     @IBOutlet weak var playerView: PlayerView!
     @IBOutlet var playerViewBottomConstraint: NSLayoutConstraint!
@@ -21,11 +34,24 @@ class VideoViewController: UIViewController {
     @IBOutlet weak var landscapePlayTimeLabel: UILabel!
     @IBOutlet weak var seekbarView: SeekbarView!
     
-    var isLiveMode: Bool = false
+    // MARK: - 최소화
+    private var isMinimizeMode: Bool = false {
+        didSet {
+            self.minimizeView.isHidden = !self.isMinimizeMode
+        }
+    }
+    @IBOutlet weak var minimizeBottomViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var minimizeView: UIView!
+    @IBOutlet weak var minimizePlayerView: PlayerView!
+    @IBOutlet weak var minimizePlayBtn: UIButton!
+    @IBOutlet weak var minimizeTitleLabel: UILabel!
+    @IBOutlet weak var minimizeChannelLabel: UILabel!
     
     // MARK: - chat
-    @IBOutlet weak var chattingView: ChattingView!
+    var isLiveMode: Bool = false
     
+    @IBOutlet weak var chattingView: ChattingView!
+    @IBOutlet weak var chattingViewBottomConstraint: NSLayoutConstraint!
     
     // MARK: - scroll
     
@@ -51,6 +77,9 @@ class VideoViewController: UIViewController {
         }
     }
     
+    private var pipController: AVPictureInPictureController?
+    weak var delegate: VideoViewControllerDelegate?
+    
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
@@ -61,19 +90,38 @@ class VideoViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        self.modalPresentationStyle = .fullScreen
+        self.modalPresentationStyle = .custom
+        self.transitioningDelegate = self
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        self.modalPresentationStyle = .fullScreen
+        self.modalPresentationStyle = .custom
+        self.transitioningDelegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.isBeingPresented {
+            self.setupPIPController()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isBeingDismissed {
+            self.pipController = nil
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.playerView.delegate = self
+        self.minimizePlayerView.delegate = self
         self.seekbarView.delegate = self
         self.chattingView.delegate = self
 
@@ -83,14 +131,43 @@ class VideoViewController: UIViewController {
         self.bindViewModel()
         self.videoViewModel.request()
         self.chattingView.isHidden = !self.isLiveMode
+        
+        self.setupPIPController()
     }
+    
     
     // device 회전 감지
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         
         self.switchControlPanel(size: size)
         self.playerViewBottomConstraint.isActive = self.isLandscape(size: size)
+        
+        self.chattingView.textField.resignFirstResponder()
+        if self.isLandscape(size: size) {
+            self.chattingViewBottomConstraint.constant = self.chattingHiddenBottomConstraint
+        } else {
+            self.chattingViewBottomConstraint.constant = 0
+        }
+        
+        coordinator.animate { _ in
+            self.chattingView.collectionView.collectionViewLayout.invalidateLayout()
+        }
+        
         super.viewWillTransition(to: size, with: coordinator)
+    }
+    
+    private func setupPIPController() {
+        guard
+            AVPictureInPictureController.isPictureInPictureSupported(),
+            let playerLayer = self.playerView.avPlayerLayer
+        else {
+            return
+        }
+        
+        let pipController = AVPictureInPictureController(playerLayer: playerLayer)
+        pipController?.canStartPictureInPictureAutomaticallyFromInline = true
+        
+        self.pipController = pipController
     }
     
     private func isLandscape(size: CGSize) -> Bool {
@@ -109,6 +186,8 @@ class VideoViewController: UIViewController {
         self.playerView.set(url: video.videoURL)
         self.playerView.play()
         self.titleLabel.text = video.title
+        self.minimizeTitleLabel.text = video.title
+        self.minimizeChannelLabel.text = video.channel
         self.landscapeTitleLabel.text = video.title
         self.channelThumbnailImageView.loadImage(url: video.channelImageUrl)
         self.channelNameLabel.text = video.channel
@@ -128,9 +207,20 @@ class VideoViewController: UIViewController {
     private func updatePlayButton(isPlaying: Bool) {
         let playImage = UIImage(named: isPlaying ? "small_pause" : "small_play")
         self.playBtn.setImage(playImage, for: .normal)
+        self.minimizePlayBtn.setImage(playImage, for: .normal)
         
         let landscapePlayImage = UIImage(named: isPlaying ? "big_pause" : "big_play")
         self.landscapePlayBtn.setImage(landscapePlayImage, for: .normal)
+    }
+}
+
+extension VideoViewController {
+    @IBAction func minimizeViewCloseDidTap(_ sender: Any) {
+        self.delegate?.videoViewControllerDidTapClose(self)
+    }
+    
+    @IBAction func maximize(_ sender: Any) {
+        self.delegate?.videoViewControllerNeesdMaximize(self)
     }
 }
 
@@ -148,6 +238,8 @@ extension VideoViewController {
     }
     
     @IBAction func closeDidTap(_ sender: Any) {
+        self.isMinimizeMode = true
+        self.rotateScene(landscape: false)
         self.dismiss(animated: true)
     }
     
@@ -180,7 +272,7 @@ extension VideoViewController {
     @IBAction func moreDidTap(_ sender: Any) {
         let vc = MoreViewController()
         
-        self.present(vc, animated: false)
+        self.present(vc, animated: true)
     }
 }
 
@@ -229,6 +321,103 @@ extension VideoViewController: PlayerViewDelegate {
     }
 }
 
+extension VideoViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        self
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        self
+    }
+}
+
+extension VideoViewController: UIViewControllerAnimatedTransitioning {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        0.3
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        if self.isBeingPresented {
+            guard let view = transitionContext.view(forKey: .to) else { return }
+            
+            transitionContext.containerView.addSubview(view)
+            if self.isMinimizeMode {
+                self.chattingViewBottomConstraint.constant = 0
+                self.playerViewBottomConstraint.isActive = false
+                self.playerView.isHidden = false
+                self.minimizeBottomViewConstraint.isActive = false
+                self.isMinimizeMode = false
+                
+                UIView.animate(
+                    withDuration: self.transitionDuration(using: transitionContext),
+                    animations: {
+                        view.frame = .init(
+                            origin: CGPoint(x: 0, y: view.safeAreaInsets.top),
+                            size: view.window?.frame.size ?? view.frame.size
+                        )
+                    },
+                    completion: { _ in
+                        view.frame.origin = .zero
+                        transitionContext.completeTransition(transitionContext.transitionWasCancelled == false)
+                    }
+                )
+            } else {
+                view.alpha = 0
+                UIView.animate(
+                    withDuration: self.transitionDuration(using: transitionContext),
+                    animations: {
+                        view.alpha = 1
+                        view.frame = .init(
+                            origin: CGPoint(x: 0, y: view.safeAreaInsets.top),
+                            size: view.window?.frame.size ?? view.frame.size
+                        )
+                    },
+                    completion: { _ in
+                        transitionContext.completeTransition(transitionContext.transitionWasCancelled == false)
+                    }
+                )
+            }
+        } else {
+            guard let view = transitionContext.view(forKey: .from) else { return }
+            
+            if self.isMinimizeMode,
+               let yPosition = self.delegate?.videoViewController(self, yPositionForMinimizeView: self.minimizeView.frame.height) {
+                
+                self.minimizePlayerView.player = self.playerView.player
+                self.isControlPanelHidden = true
+                self.chattingViewBottomConstraint.constant = self.chattingHiddenBottomConstraint
+                self.playerViewBottomConstraint.isActive = true
+                self.playerView.isHidden = true
+                
+                view.frame.origin.y = view.safeAreaInsets.top
+                UIView.animate(
+                    withDuration: self.transitionDuration(using: transitionContext),
+                    animations: {
+                        view.frame.origin.y = yPosition
+                        view.frame.size.height = self.minimizeView.frame.height
+                    },
+                    completion: { _ in
+                        transitionContext.completeTransition(transitionContext.transitionWasCancelled == false)
+                        self.minimizeBottomViewConstraint.isActive = true
+                        self.delegate?.videoViewControllerDidMinimize(self)
+                    }
+                )
+            } else {
+                UIView.animate(
+                    withDuration: self.transitionDuration(using: transitionContext),
+                    animations: {
+                        view.alpha = 0
+                    },
+                    completion: { _ in
+                        transitionContext.completeTransition(transitionContext.transitionWasCancelled == false)
+                        view.alpha = 1
+                    }
+                )
+            }
+        }
+    }
+}
+
 // MARK: - 영상 시간 설정 바 delegate
 extension VideoViewController: SeekbarViewDelegate {
     func seekbar(_ seekbar: SeekbarView, seekToPercent percent: Double) {
@@ -238,6 +427,7 @@ extension VideoViewController: SeekbarViewDelegate {
 
 extension VideoViewController: ChattingViewDelegate {
     func liveChattingViewCloseDidTap(_ chattingView: ChattingView) {
+//        self.setEditing(false, animated: true)
         self.chattingView.isHidden = true
     }
 }

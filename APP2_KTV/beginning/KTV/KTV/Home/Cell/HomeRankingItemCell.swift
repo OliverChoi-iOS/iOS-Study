@@ -9,6 +9,7 @@ import UIKit
 
 class HomeRankingItemCell: UICollectionViewCell {
     static let identifier: String = "HomeRankingItemCell"
+    static let size: CGSize = .init(width: 130, height: 239)
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var thumbnailView: UIImageView!
