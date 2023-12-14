@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="BookmarkCell" customModule="KTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7V7-bP-ffY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Cog-MB-SMA">
+                                <rect key="frame" x="30" y="5" width="260" height="48"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xf2-qf-i8h">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        <color key="backgroundColor" name="gray-4"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="3in-Tq-Y2V"/>
+                                            <constraint firstAttribute="height" constant="48" id="WsC-iv-DeD"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="channel_name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pq-5B-eNc">
+                                        <rect key="frame" x="68" y="0.0" width="192" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" name="main-wh"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="xf2-qf-i8h" firstAttribute="leading" secondItem="Cog-MB-SMA" secondAttribute="leading" id="dsq-b6-9BK"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Cog-MB-SMA" secondAttribute="bottom" constant="5" id="cxs-Le-Hjx"/>
+                            <constraint firstAttribute="trailing" secondItem="Cog-MB-SMA" secondAttribute="trailing" constant="30" id="hKF-6d-uA0"/>
+                            <constraint firstItem="Cog-MB-SMA" firstAttribute="leading" secondItem="7V7-bP-ffY" secondAttribute="leading" constant="30" id="mqz-rn-le5"/>
+                            <constraint firstItem="Cog-MB-SMA" firstAttribute="top" secondItem="7V7-bP-ffY" secondAttribute="top" constant="5" id="vBU-iS-bfD"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="7V7-bP-ffY" secondAttribute="bottom" id="CtD-ZZ-fDI"/>
+                    <constraint firstAttribute="trailing" secondItem="7V7-bP-ffY" secondAttribute="trailing" id="Xtf-t1-iie"/>
+                    <constraint firstItem="7V7-bP-ffY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fbp-RT-6i2"/>
+                    <constraint firstItem="7V7-bP-ffY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nZL-In-XXs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="channelThumbnailView" destination="xf2-qf-i8h" id="uJS-Oz-XAK"/>
+                <outlet property="channelTitleLabel" destination="9Pq-5B-eNc" id="8oe-DA-gnk"/>
+                <outlet property="containerView" destination="7V7-bP-ffY" id="jCI-hr-unf"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="20"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="gray-4">
+            <color red="0.21176470588235294" green="0.20392156862745098" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="main-wh">
+            <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
