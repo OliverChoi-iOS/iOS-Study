@@ -54,6 +54,10 @@
 		A757208C2B2A8DB1006767DC /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A757208B2B2A8DB1006767DC /* GoogleSignInSwift */; };
 		A757208F2B2A8EBF006767DC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A757208E2B2A8EBF006767DC /* User.swift */; };
 		A75720912B2A8EF5006767DC /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75720902B2A8EF5006767DC /* ServiceError.swift */; };
+		A75720932B2A9D5E006767DC /* MainTabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75720922B2A9D5E006767DC /* MainTabType.swift */; };
+		A75720972B2A9E67006767DC /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75720962B2A9E67006767DC /* ChatListView.swift */; };
+		A75720992B2A9E71006767DC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75720982B2A9E71006767DC /* HomeView.swift */; };
+		A757209C2B2A9FFD006767DC /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = A757209B2B2A9FFD006767DC /* SwiftUIIntrospect */; };
 		A780C8EF2B16E76E007EF1AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A780C8EE2B16E76E007EF1AD /* LaunchScreen.storyboard */; };
 		A780C8F22B16E8A9007EF1AD /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780C8F12B16E8A9007EF1AD /* DIContainer.swift */; };
 		A780C8F52B16E8DB007EF1AD /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780C8F42B16E8DB007EF1AD /* Services.swift */; };
@@ -100,6 +104,9 @@
 		A75720862B2A8A45006767DC /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		A757208E2B2A8EBF006767DC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A75720902B2A8EF5006767DC /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		A75720922B2A9D5E006767DC /* MainTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabType.swift; sourceTree = "<group>"; };
+		A75720962B2A9E67006767DC /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
+		A75720982B2A9E71006767DC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A780C8EE2B16E76E007EF1AD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A780C8F12B16E8A9007EF1AD /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		A780C8F42B16E8DB007EF1AD /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
@@ -114,6 +121,7 @@
 				A75720542B2A83F5006767DC /* FirebaseDatabase in Frameworks */,
 				A75720622B2A83F5006767DC /* FirebaseFunctionsCombine-Community in Frameworks */,
 				A757205A2B2A83F5006767DC /* FirebaseFirestore in Frameworks */,
+				A757209C2B2A9FFD006767DC /* SwiftUIIntrospect in Frameworks */,
 				A75720462B2A83F5006767DC /* FirebaseAnalyticsSwift in Frameworks */,
 				A75720422B2A83F5006767DC /* FirebaseAnalytics in Frameworks */,
 				A75720442B2A83F5006767DC /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
@@ -255,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				A75720822B2A87C6006767DC /* MainTabView.swift */,
+				A75720922B2A9D5E006767DC /* MainTabType.swift */,
 			);
 			path = MainTab;
 			sourceTree = "<group>";
@@ -265,6 +274,22 @@
 				A757208E2B2A8EBF006767DC /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A75720942B2A9E23006767DC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A75720982B2A9E71006767DC /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A75720952B2A9E29006767DC /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				A75720962B2A9E67006767DC /* ChatListView.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		A780C8F02B16E89D007EF1AD /* General */ = {
@@ -288,9 +313,11 @@
 		A780C8F62B16E95B007EF1AD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A757207F2B2A87A8006767DC /* MainTab */,
 				A757207E2B2A87A2006767DC /* Login */,
 				A780C8F72B16E965007EF1AD /* Authentication */,
+				A757207F2B2A87A8006767DC /* MainTab */,
+				A75720942B2A9E23006767DC /* Home */,
+				A75720952B2A9E29006767DC /* Chat */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -350,6 +377,7 @@
 				A75720752B2A83F5006767DC /* FirebaseStorageCombine-Community */,
 				A75720892B2A8DB1006767DC /* GoogleSignIn */,
 				A757208B2B2A8DB1006767DC /* GoogleSignInSwift */,
+				A757209B2B2A9FFD006767DC /* SwiftUIIntrospect */,
 			);
 			productName = LMessenger;
 			productReference = 723ABD832AFFF1B800C260F1 /* LMessenger.app */;
@@ -426,6 +454,7 @@
 			packageReferences = (
 				A75720402B2A83F5006767DC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				A75720882B2A8DB1006767DC /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				A757209A2B2A9FFD006767DC /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 			);
 			productRefGroup = 723ABD842AFFF1B800C260F1 /* Products */;
 			projectDirPath = "";
@@ -476,10 +505,13 @@
 				A75720812B2A87BA006767DC /* LoginIntroView.swift in Sources */,
 				A780C8F92B16E998007EF1AD /* AuthenticationViewModel.swift in Sources */,
 				A780C8F52B16E8DB007EF1AD /* Services.swift in Sources */,
+				A75720972B2A9E67006767DC /* ChatListView.swift in Sources */,
+				A75720992B2A9E71006767DC /* HomeView.swift in Sources */,
 				A780C8F22B16E8A9007EF1AD /* DIContainer.swift in Sources */,
 				723ABD892AFFF1B800C260F1 /* AuthenticatedView.swift in Sources */,
 				A75720782B2A843B006767DC /* AppDelegate.swift in Sources */,
 				72E4BEFC2B00B871007A1060 /* Color+Extension.swift in Sources */,
+				A75720932B2A9D5E006767DC /* MainTabType.swift in Sources */,
 				A75720872B2A8A45006767DC /* LoginButtonStyle.swift in Sources */,
 				723ABD872AFFF1B800C260F1 /* LMessengerApp.swift in Sources */,
 				A75720852B2A89A2006767DC /* LoginView.swift in Sources */,
@@ -830,6 +862,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		A757209A2B2A9FFD006767DC /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/swiftui-introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -977,6 +1017,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A75720882B2A8DB1006767DC /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		A757209B2B2A9FFD006767DC /* SwiftUIIntrospect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A757209A2B2A9FFD006767DC /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
+			productName = SwiftUIIntrospect;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
