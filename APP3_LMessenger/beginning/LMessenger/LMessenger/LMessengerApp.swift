@@ -8,12 +8,13 @@ import SwiftUI
 
 @main
 struct LMessengerApp: App {
-    @StateObject private var diContainer: DIContainer = .init(services: Services())
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var container: DIContainer = .init(services: Services())
     
     var body: some Scene {
         WindowGroup {
-            AuthenticatedView(authViewModel: .init())
-                .environmentObject(diContainer)
+            AuthenticatedView(authViewModel: .init(container: container))
+                .environmentObject(container)
         }
     }
 }

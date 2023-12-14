@@ -15,15 +15,20 @@ struct AuthenticatedView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            switch authViewModel.authenticationState {
+            case .unauthenticated:
+                LoginIntroView()
+                    .environmentObject(authViewModel)
+            case .authenticated:
+                MainTabView()
+            }
         }
-        .padding()
+        .onAppear {
+            authViewModel.send(action: .checkAuthenticationState)
+        }
     }
 }
 
 #Preview {
-    AuthenticatedView(authViewModel: .init())
+    return AuthenticatedView(authViewModel: .init(container: .init(services: StubService())))
 }
