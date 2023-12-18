@@ -43,6 +43,11 @@ class AuthenticationViewModel: ObservableObject {
             }
         case .googleLogin:
             container.services.authService.signInWithGoogle()
+                .compactMap { [weak self] user in
+                    // DB
+                    self?.container.services.userService.addUser(user)
+                }
+                .flatMap { $0 }
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         self?.isLoading = false
