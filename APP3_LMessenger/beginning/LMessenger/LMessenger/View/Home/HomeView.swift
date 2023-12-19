@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject private var container: DIContainer
     @StateObject var viewModel: HomeViewModel
     
     var body: some View {
@@ -16,7 +17,7 @@ struct HomeView: View {
                 .fullScreenCover(item: $viewModel.modalDestination) {
                     switch $0 {
                     case .myProfile:
-                        MyProfileView()
+                        MyProfileView(viewModel: .init(container: container, userId: viewModel.userId))
                     case let .otherProfile(userId):
                         OtherProfileView()
                     }
@@ -108,10 +109,18 @@ struct HomeView: View {
             
             Spacer()
             
-            Image("person")
-                .resizable()
-                .frame(width: 52, height: 52)
-                .clipShape(Circle())
+            AsyncImage(
+                url: URL(string: viewModel.myUser?.profileURL ?? ""),
+                content: { image in
+                    image.resizable()
+                },
+                placeholder: {
+                    Image("person")
+                        .resizable()
+                }
+            )
+            .frame(width: 52, height: 52)
+            .clipShape(Circle())
         }
         .padding(.horizontal, 30)
         .onTapGesture {
