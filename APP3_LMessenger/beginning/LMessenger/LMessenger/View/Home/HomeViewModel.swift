@@ -12,6 +12,7 @@ class HomeViewModel: ObservableObject {
     
     enum Action {
         case load
+        case requestContacts
         case presentMyProfileView
         case presentOtherProfileView(String)
     }
@@ -39,10 +40,32 @@ class HomeViewModel: ObservableObject {
                 .handleEvents(receiveOutput: { [weak self] user in
                     self?.myUser = user
                 })
-                .compactMap { [weak self] user in
+                .flatMap { [weak self] user in
                     self?.container.services.userService.loadUsers(id: user.id)
+                    ?? Empty().eraseToAnyPublisher()
                 }
-                .flatMap { $0 }
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        self?.phase = .fail
+                    }
+                } receiveValue: { [weak self] users in
+                    self?.phase = .success
+                    self?.users = users
+                }.store(in: &subscriptions)
+            
+        case .requestContacts:
+            container.services.contactService.fetchContacts()
+                .flatMap { [weak self] users in
+                    self?.container.services.userService.addUserAfterContact(users: users)
+                    ?? Empty().eraseToAnyPublisher()
+                }
+                .flatMap { [weak self] _ in
+                    guard let self else {
+                        return Empty<[User], ServiceError>().eraseToAnyPublisher()
+                    }
+                    
+                    return self.container.services.userService.loadUsers(id: self.userId)
+                }
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         self?.phase = .fail
