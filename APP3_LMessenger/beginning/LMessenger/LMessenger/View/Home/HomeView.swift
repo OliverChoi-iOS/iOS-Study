@@ -109,18 +109,9 @@ struct HomeView: View {
             
             Spacer()
             
-            AsyncImage(
-                url: URL(string: viewModel.myUser?.profileURL ?? ""),
-                content: { image in
-                    image.resizable()
-                },
-                placeholder: {
-                    Image("person")
-                        .resizable()
-                }
-            )
-            .frame(width: 52, height: 52)
-            .clipShape(Circle())
+            URLImageView(urlString: viewModel.myUser?.profileURL)
+                .frame(width: 52, height: 52)
+                .clipShape(Circle())
         }
         .padding(.horizontal, 30)
         .onTapGesture {

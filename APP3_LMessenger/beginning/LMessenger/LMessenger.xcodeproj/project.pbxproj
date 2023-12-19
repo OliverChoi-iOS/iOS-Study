@@ -32,6 +32,12 @@
 		A753AC4B2B31772B0070C6E6 /* UploadProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753AC4A2B31772B0070C6E6 /* UploadProvider.swift */; };
 		A753AC4D2B3177FE0070C6E6 /* UploadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753AC4C2B3177FE0070C6E6 /* UploadService.swift */; };
 		A753AC502B3178570070C6E6 /* UploadSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753AC4F2B3178570070C6E6 /* UploadSourceType.swift */; };
+		A753AC522B317D740070C6E6 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753AC512B317D730070C6E6 /* ImageCacheService.swift */; };
+		A753AC552B317DDD0070C6E6 /* MemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753AC542B317DDD0070C6E6 /* MemoryStorage.swift */; };
+		A753AC572B317E980070C6E6 /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753AC562B317E980070C6E6 /* DiskStorage.swift */; };
+		A753AC5A2B31804A0070C6E6 /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753AC592B31804A0070C6E6 /* SHA256.swift */; };
+		A753AC5C2B3185000070C6E6 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753AC5B2B3185000070C6E6 /* URLImageView.swift */; };
+		A753AC5F2B3185140070C6E6 /* URLImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753AC5E2B3185140070C6E6 /* URLImageViewModel.swift */; };
 		A75510402B30299700EB1DEE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A755103F2B30299700EB1DEE /* HomeViewModel.swift */; };
 		A75510432B30306B00EB1DEE /* UserDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75510422B30306B00EB1DEE /* UserDBRepository.swift */; };
 		A75510452B30308C00EB1DEE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75510442B30308C00EB1DEE /* UserService.swift */; };
@@ -111,6 +117,12 @@
 		A753AC4A2B31772B0070C6E6 /* UploadProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProvider.swift; sourceTree = "<group>"; };
 		A753AC4C2B3177FE0070C6E6 /* UploadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadService.swift; sourceTree = "<group>"; };
 		A753AC4F2B3178570070C6E6 /* UploadSourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSourceType.swift; sourceTree = "<group>"; };
+		A753AC512B317D730070C6E6 /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
+		A753AC542B317DDD0070C6E6 /* MemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryStorage.swift; sourceTree = "<group>"; };
+		A753AC562B317E980070C6E6 /* DiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
+		A753AC592B31804A0070C6E6 /* SHA256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA256.swift; sourceTree = "<group>"; };
+		A753AC5B2B3185000070C6E6 /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
+		A753AC5E2B3185140070C6E6 /* URLImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageViewModel.swift; sourceTree = "<group>"; };
 		A755103F2B30299700EB1DEE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A75510422B30306B00EB1DEE /* UserDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDBRepository.swift; sourceTree = "<group>"; };
 		A75510442B30308C00EB1DEE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -204,6 +216,7 @@
 				A75510412B30305A00EB1DEE /* Repository */,
 				A753AC482B3176F70070C6E6 /* Provider */,
 				72E4BEFA2B00B871007A1060 /* Extension */,
+				A753AC582B3180420070C6E6 /* Util */,
 				723ABDB02AFFF1D800C260F1 /* Resource */,
 				723ABD8C2AFFF1B900C260F1 /* Preview Content */,
 			);
@@ -256,6 +269,7 @@
 		A753AC2D2B311FC40070C6E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A753AC5D2B3185060070C6E6 /* URLImage */,
 				A753AC2E2B311FCF0070C6E6 /* PlaceholderView.swift */,
 				A753AC302B3120050070C6E6 /* LoadingView.swift */,
 				A753AC322B3120530070C6E6 /* ErrorView.swift */,
@@ -307,6 +321,33 @@
 				A753AC4F2B3178570070C6E6 /* UploadSourceType.swift */,
 			);
 			path = Upload;
+			sourceTree = "<group>";
+		};
+		A753AC532B317DD00070C6E6 /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				A753AC512B317D730070C6E6 /* ImageCacheService.swift */,
+				A753AC542B317DDD0070C6E6 /* MemoryStorage.swift */,
+				A753AC562B317E980070C6E6 /* DiskStorage.swift */,
+			);
+			path = ImageCache;
+			sourceTree = "<group>";
+		};
+		A753AC582B3180420070C6E6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A753AC592B31804A0070C6E6 /* SHA256.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		A753AC5D2B3185060070C6E6 /* URLImage */ = {
+			isa = PBXGroup;
+			children = (
+				A753AC5B2B3185000070C6E6 /* URLImageView.swift */,
+				A753AC5E2B3185140070C6E6 /* URLImageViewModel.swift */,
+			);
+			path = URLImage;
 			sourceTree = "<group>";
 		};
 		A75510412B30305A00EB1DEE /* Repository */ = {
@@ -386,6 +427,7 @@
 		A780C8F32B16E8C9007EF1AD /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A753AC532B317DD00070C6E6 /* ImageCache */,
 				A753AC4E2B31784A0070C6E6 /* Upload */,
 				A753AC452B316C510070C6E6 /* PhotoPicker */,
 				A780C8F42B16E8DB007EF1AD /* Services.swift */,
@@ -573,12 +615,15 @@
 				A755104A2B30318B00EB1DEE /* DBError.swift in Sources */,
 				A75720812B2A87BA006767DC /* LoginIntroView.swift in Sources */,
 				A753AC472B316C690070C6E6 /* PhotoImage.swift in Sources */,
+				A753AC552B317DDD0070C6E6 /* MemoryStorage.swift in Sources */,
 				A780C8F92B16E998007EF1AD /* AuthenticationViewModel.swift in Sources */,
 				A753AC352B31225C0070C6E6 /* HomeModalDestination.swift in Sources */,
+				A753AC572B317E980070C6E6 /* DiskStorage.swift in Sources */,
 				A780C8F52B16E8DB007EF1AD /* Services.swift in Sources */,
 				A75720972B2A9E67006767DC /* ChatListView.swift in Sources */,
 				A753AC3C2B3132AF0070C6E6 /* ContactService.swift in Sources */,
 				A753AC332B3120530070C6E6 /* ErrorView.swift in Sources */,
+				A753AC5F2B3185140070C6E6 /* URLImageViewModel.swift in Sources */,
 				A75720992B2A9E71006767DC /* HomeView.swift in Sources */,
 				A780C8F22B16E8A9007EF1AD /* DIContainer.swift in Sources */,
 				723ABD892AFFF1B800C260F1 /* AuthenticatedView.swift in Sources */,
@@ -592,16 +637,19 @@
 				A75720932B2A9D5E006767DC /* MainTabType.swift in Sources */,
 				A753AC4D2B3177FE0070C6E6 /* UploadService.swift in Sources */,
 				A75720872B2A8A45006767DC /* LoginButtonStyle.swift in Sources */,
+				A753AC5C2B3185000070C6E6 /* URLImageView.swift in Sources */,
 				723ABD872AFFF1B800C260F1 /* LMessengerApp.swift in Sources */,
 				A753AC3E2B315AD50070C6E6 /* MyProfileViewModel.swift in Sources */,
 				A75720852B2A89A2006767DC /* LoginView.swift in Sources */,
 				A753AC402B315CB10070C6E6 /* MyProfileMenuType.swift in Sources */,
 				A753AC422B3161FE0070C6E6 /* MyProfileDescEditView.swift in Sources */,
 				A757207D2B2A85F1006767DC /* AuthenticationService.swift in Sources */,
+				A753AC5A2B31804A0070C6E6 /* SHA256.swift in Sources */,
 				A753AC442B316B7B0070C6E6 /* PhotoPickerService.swift in Sources */,
 				A753AC2F2B311FCF0070C6E6 /* PlaceholderView.swift in Sources */,
 				A75510452B30308C00EB1DEE /* UserService.swift in Sources */,
 				A753AC502B3178570070C6E6 /* UploadSourceType.swift in Sources */,
+				A753AC522B317D740070C6E6 /* ImageCacheService.swift in Sources */,
 				A75510432B30306B00EB1DEE /* UserDBRepository.swift in Sources */,
 				A75720912B2A8EF5006767DC /* ServiceError.swift in Sources */,
 				A75720832B2A87C6006767DC /* MainTabView.swift in Sources */,
