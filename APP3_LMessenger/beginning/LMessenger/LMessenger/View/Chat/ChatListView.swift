@@ -19,7 +19,7 @@ struct ChatListView: View {
                 .padding(.vertical, 14)
                 
                 ForEach(viewModel.chatRooms, id: \.chatRoomId) { chatRoom in
-                    ChatRoomCell(chatRoom: chatRoom, userId: viewModel.userId)
+                    ChatRoomCell(chatRoom: chatRoom, myUserId: viewModel.userId)
                 }
             }
             .navigationTitle("대화")
@@ -33,10 +33,16 @@ struct ChatListView: View {
 
 fileprivate struct ChatRoomCell: View {
     let chatRoom: ChatRoom
-    let userId: String
+    let myUserId: String
     
     var body: some View {
-        NavigationLink(value: NavigationDestination.chat(chatRoom)) {
+        NavigationLink(
+            value: NavigationDestination.chat(
+                chatRoomId: chatRoom.chatRoomId,
+                myUserId: myUserId,
+                otherUserId: chatRoom.otherUserId
+            )
+        ) {
             HStack(spacing: 8) {
                 Image("person")
                     .resizable()
