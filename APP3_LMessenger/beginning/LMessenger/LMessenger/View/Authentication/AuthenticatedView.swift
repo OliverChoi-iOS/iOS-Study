@@ -8,9 +8,14 @@ import SwiftUI
 
 struct AuthenticatedView: View {
     @StateObject private var authViewModel: AuthenticationViewModel
+    @StateObject private var navigationRouter: NavigationRouter
     
-    init(authViewModel: AuthenticationViewModel) {
+    init(
+        authViewModel: AuthenticationViewModel,
+        navigationRouter: NavigationRouter
+    ) {
         _authViewModel = StateObject(wrappedValue: authViewModel)
+        _navigationRouter = StateObject(wrappedValue: navigationRouter)
     }
     
     var body: some View {
@@ -20,6 +25,7 @@ struct AuthenticatedView: View {
                 LoginIntroView()
             case .authenticated:
                 MainTabView()
+                    .environmentObject(navigationRouter)
             }
         }
         .environmentObject(authViewModel)
@@ -30,5 +36,8 @@ struct AuthenticatedView: View {
 }
 
 #Preview {
-    return AuthenticatedView(authViewModel: .init(container: .init(services: StubService())))
+    return AuthenticatedView(
+        authViewModel: .init(container: .init(services: StubService())),
+        navigationRouter: .init()
+    )
 }

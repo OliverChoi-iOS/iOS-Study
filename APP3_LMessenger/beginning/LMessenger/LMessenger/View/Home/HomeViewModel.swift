@@ -26,10 +26,16 @@ class HomeViewModel: ObservableObject {
     var userId: String
     
     private var container: DIContainer
+    private var navigationRouter: NavigationRouter
     private var subscriptions = Set<AnyCancellable>()
     
-    init(container: DIContainer, userId: String) {
+    init(
+        container: DIContainer,
+        navigationRouter: NavigationRouter,
+        userId: String
+    ) {
         self.container = container
+        self.navigationRouter = navigationRouter
         self.userId = userId
     }
     
@@ -62,7 +68,7 @@ class HomeViewModel: ObservableObject {
                 }
                 .flatMap { [weak self] _ in
                     guard let self else {
-                        return Empty<[User], ServiceError>().eraseToAnyPublisher()
+                        return Fail<[User], ServiceError>(error: ServiceError.selfIsNil).eraseToAnyPublisher()
                     }
                     
                     return self.container.services.userService.loadUsers(id: self.userId)
@@ -84,7 +90,13 @@ class HomeViewModel: ObservableObject {
             
         case let .goToChat(otherUser):
             // ChatRooms/{my user id}/{other user id}
-            return
-        }
+            container.services.chatRoomService.createChatRoomIfNeeded(myUserId: userId, otherUserId: otherUser.id, otherUserName: otherUser.name)
+                .sink { completion in
+                    
+                } receiveValue: { [weak self] chatRoom in
+                    self?.navigationRouter.push(to: .chat(chatRoom))
+                }.store(in: &subscriptions)
+            
+        } // switch
     }
 }

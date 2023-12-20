@@ -13,3 +13,14 @@ struct ChatRoomObject: Codable {
     var otherUserName: String
     var otherUserId: String
 }
+
+extension ChatRoomObject {
+    func toModel() -> ChatRoom {
+        .init(
+            chatRoomId: chatRoomId,
+            lastMessage: lastMessage,
+            otherUserName: otherUserName,
+            otherUserId: otherUserId
+        )
+    }
+}
