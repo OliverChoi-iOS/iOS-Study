@@ -9,11 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var container: DIContainer
-    @EnvironmentObject private var navigationRouter: NavigationRouter
     @StateObject var viewModel: HomeViewModel
     
     var body: some View {
-        NavigationStack(path: $navigationRouter.destinations) {
+        LMessengerNavigationStackView {
             contentView
                 .fullScreenCover(item: $viewModel.modalDestination) {
                     switch $0 {
@@ -26,14 +25,6 @@ struct HomeView: View {
                                 viewModel.send(action: .goToChat(otherUser))
                             }
                         )
-                    }
-                }
-                .navigationDestination(for: NavigationDestination.self) {
-                    switch $0 {
-                    case .chat(let chatRoom):
-                        ChatView(chatRoom: chatRoom)
-                    case .search:
-                        SearchView()
                     }
                 }
         }
@@ -71,8 +62,10 @@ struct HomeView: View {
             profileView
                 .padding(.bottom, 30)
             
-            searchButton
-                .padding(.bottom, 24)
+            NavigationLink(value: NavigationDestination.search) {
+                SearchButton()
+            }
+            .padding(.bottom, 24)
             
             HStack {
                 Text("친구")
@@ -133,27 +126,6 @@ struct HomeView: View {
         }
     }
     
-    var searchButton: some View {
-        NavigationLink(value: NavigationDestination.search) {
-            ZStack {
-                Rectangle()
-                    .foregroundStyle(Color.clear)
-                    .frame(height: 36)
-                    .background(Color.greyCool)
-                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                
-                HStack {
-                    Text("검색")
-                        .font(.system(size: 12))
-                        .foregroundStyle(Color.greyLightVer2)
-                    Spacer()
-                }
-                .padding(.leading, 22)
-            }
-            .padding(.horizontal, 30)
-        }
-    }
-    
     var emptyView: some View {
         VStack {
             VStack(spacing: 3) {
@@ -189,11 +161,11 @@ struct HomeView: View {
     
     return HomeView(
         viewModel: .init(
-            container: container, 
+            container: container,
             navigationRouter: navigationRouter,
             userId: "user1_id"
         )
     )
-        .environmentObject(container)
-        .environmentObject(navigationRouter)
+    .environmentObject(container)
+    .environmentObject(navigationRouter)
 }

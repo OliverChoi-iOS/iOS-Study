@@ -79,6 +79,9 @@
 		A796D7C62B327BEE0056CE2F /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796D7C52B327BEE0056CE2F /* NavigationRouter.swift */; };
 		A796D7C82B327EE50056CE2F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796D7C72B327EE50056CE2F /* ChatView.swift */; };
 		A796D7CB2B327F010056CE2F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796D7CA2B327F010056CE2F /* SearchView.swift */; };
+		A796D7CD2B3285F90056CE2F /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796D7CC2B3285F90056CE2F /* ChatListViewModel.swift */; };
+		A796D7CF2B32875B0056CE2F /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796D7CE2B32875A0056CE2F /* SearchButton.swift */; };
+		A796D7D12B3288140056CE2F /* LMessengerNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796D7D02B3288140056CE2F /* LMessengerNavigationStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +169,9 @@
 		A796D7C52B327BEE0056CE2F /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		A796D7C72B327EE50056CE2F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		A796D7CA2B327F010056CE2F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		A796D7CC2B3285F90056CE2F /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
+		A796D7CE2B32875A0056CE2F /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
+		A796D7D02B3288140056CE2F /* LMessengerNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMessengerNavigationStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +299,7 @@
 				A753AC2E2B311FCF0070C6E6 /* PlaceholderView.swift */,
 				A753AC302B3120050070C6E6 /* LoadingView.swift */,
 				A753AC322B3120530070C6E6 /* ErrorView.swift */,
+				A796D7CE2B32875A0056CE2F /* SearchButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -451,6 +458,7 @@
 			children = (
 				A75720962B2A9E67006767DC /* ChatListView.swift */,
 				A796D7C72B327EE50056CE2F /* ChatView.swift */,
+				A796D7CC2B3285F90056CE2F /* ChatListViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -511,6 +519,7 @@
 			children = (
 				A796D7C32B327BD50056CE2F /* NavigationDestination.swift */,
 				A796D7C52B327BEE0056CE2F /* NavigationRouter.swift */,
+				A796D7D02B3288140056CE2F /* LMessengerNavigationStackView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -690,7 +699,9 @@
 				A753AC3C2B3132AF0070C6E6 /* ContactService.swift in Sources */,
 				A753AC332B3120530070C6E6 /* ErrorView.swift in Sources */,
 				A753AC5F2B3185140070C6E6 /* URLImageViewModel.swift in Sources */,
+				A796D7CD2B3285F90056CE2F /* ChatListViewModel.swift in Sources */,
 				A75720992B2A9E71006767DC /* HomeView.swift in Sources */,
+				A796D7CF2B32875B0056CE2F /* SearchButton.swift in Sources */,
 				A780C8F22B16E8A9007EF1AD /* DIContainer.swift in Sources */,
 				723ABD892AFFF1B800C260F1 /* AuthenticatedView.swift in Sources */,
 				A755104C2B30334400EB1DEE /* Constant.swift in Sources */,
@@ -719,6 +730,7 @@
 				A796D7BF2B3277410056CE2F /* ChatRoomService.swift in Sources */,
 				A75510452B30308C00EB1DEE /* UserService.swift in Sources */,
 				A753AC502B3178570070C6E6 /* UploadSourceType.swift in Sources */,
+				A796D7D12B3288140056CE2F /* LMessengerNavigationStackView.swift in Sources */,
 				A75606E12B318C7A001CA604 /* ChatRoomObject.swift in Sources */,
 				A753AC522B317D740070C6E6 /* ImageCacheService.swift in Sources */,
 				A75510432B30306B00EB1DEE /* UserDBRepository.swift in Sources */,
