@@ -16,6 +16,7 @@ protocol UserDBRepositoryType {
     func updateUser(userId: String, key: String, value: Any) async throws
     func loadUsers() -> AnyPublisher<[UserObject], DBError>
     func addUserAfterContact(users: [UserObject]) -> AnyPublisher<Void, DBError>
+    func filterUsers(with queryString: String) -> AnyPublisher<[UserObject], DBError>
 }
 
 class UserDBRepository: UserDBRepositoryType {
@@ -161,5 +162,46 @@ class UserDBRepository: UserDBRepositoryType {
             .last()
             .mapError { DBError.error($0) }
             .eraseToAnyPublisher()
+    }
+    
+    func filterUsers(with queryString: String) -> AnyPublisher<[UserObject], DBError> {
+        Future<Any?, DBError> { [weak self] promise in
+            self?.db
+                .child(DBKey.Users)
+                .queryOrdered(byChild: "name")
+                .queryStarting(atValue: queryString)
+                .queryEnding(atValue: queryString + "\u{f8ff}")
+                .observeSingleEvent(
+                    of: .value,
+                    with: { snapshot in
+                        if snapshot.value is NSNull {
+                            promise(.success(nil))
+                        } else {
+                            promise(.success(snapshot.value))
+                        }
+                    },
+                    withCancel: { error in
+                        promise(.failure(DBError.error(error)))
+                    }
+                ) // [String: [String: Any]]
+        }
+        .flatMap { value in
+            if let dic = value as? [String: [String: Any]] {
+                return Just(dic)
+                    .tryMap { try JSONSerialization.data(withJSONObject: $0) }
+                    .decode(type: [String: UserObject].self, decoder: JSONDecoder())
+                    .map { $0.values.map { $0 as UserObject } }
+                    .mapError { DBError.error($0) }
+                    .eraseToAnyPublisher()
+            } else if value == nil {
+                return Just([])
+                    .setFailureType(to: DBError.self)
+                    .eraseToAnyPublisher()
+            } else {
+                return Fail(error: .invalidatedType).eraseToAnyPublisher()
+            }
+        }
+        .mapError { DBError.error($0) }
+        .eraseToAnyPublisher()
     }
 }

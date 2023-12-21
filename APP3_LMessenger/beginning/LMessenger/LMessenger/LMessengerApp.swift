@@ -15,7 +15,8 @@ struct LMessengerApp: App {
         WindowGroup {
             AuthenticatedView(
                 authViewModel: .init(container: container),
-                navigationRouter: .init()
+                navigationRouter: .init(),
+                searchDataController: .init()
             )
                 .environmentObject(container)
         }

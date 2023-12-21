@@ -11,17 +11,17 @@ struct LMessengerNavigationStackView<Content: View>: View {
     @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var navigationRouter: NavigationRouter
     
-    var content: () -> Content
+    var content: Content
     
     init(
-        content: @escaping () -> Content
+        @ViewBuilder content: () -> Content
     ) {
-        self.content = content
+        self.content = content()
     }
     
     var body: some View {
         NavigationStack(path: $navigationRouter.destinations) {
-            content()
+            content
                 .navigationDestination(for: NavigationDestination.self) {
                     switch $0 {
                     case let .chat(chatRoomId, myUserId, otherUserId):
@@ -33,8 +33,10 @@ struct LMessengerNavigationStackView<Content: View>: View {
                                 otherUserId: otherUserId
                             )
                         )
-                    case .search:
-                        SearchView()
+                    case let .search(myUserId):
+                        SearchView(
+                            viewModel: .init(container: container, userId: myUserId)
+                        )
                     }
                 }
         }

@@ -16,6 +16,7 @@ protocol UserServiceType {
     func updateDescription(userId: String, description: String) async throws
     func updateProfileURL(userId: String, profileURL: String) async throws
     func loadUsers(id: String) -> AnyPublisher<[User], ServiceError>
+    func filterUsers(with queryString: String, userId: String) -> AnyPublisher<[User], ServiceError>
 }
 
 class UserService: UserServiceType {
@@ -63,7 +64,17 @@ class UserService: UserServiceType {
         dbRepository.loadUsers()
             .map { $0
                 .map { $0.toModel() }
-                .filter { $0.id != id }
+                .filter { $0.id != id } // 자신 제외
+            }
+            .mapError { ServiceError.error($0) }
+            .eraseToAnyPublisher()
+    }
+    
+    func filterUsers(with queryString: String, userId: String) -> AnyPublisher<[User], ServiceError> {
+        dbRepository.filterUsers(with: queryString)
+            .map { $0
+                .map { $0.toModel() }
+                .filter { $0.id != userId } // 자신 제외
             }
             .mapError { ServiceError.error($0) }
             .eraseToAnyPublisher()
@@ -98,6 +109,12 @@ class StubUserService: UserServiceType {
     }
     
     func loadUsers(id: String) -> AnyPublisher<[User], ServiceError> {
+        Just([.stub1, .stub2])
+            .setFailureType(to: ServiceError.self)
+            .eraseToAnyPublisher()
+    }
+    
+    func filterUsers(with queryString: String, userId: String) -> AnyPublisher<[User], ServiceError> {
         Just([.stub1, .stub2])
             .setFailureType(to: ServiceError.self)
             .eraseToAnyPublisher()
