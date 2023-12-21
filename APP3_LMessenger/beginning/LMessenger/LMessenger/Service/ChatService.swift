@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol ChatServiceType {
-    func addChat(_ chat: Chat, id chatRoomId: String) -> AnyPublisher<Chat, ServiceError>
+    func addChat(_ chat: Chat, to chatRoomId: String) -> AnyPublisher<Chat, ServiceError>
     func observeChat(chatRoomId: String) -> AnyPublisher<Chat?, Never>
 }
 
@@ -20,7 +20,7 @@ class ChatService: ChatServiceType {
         self.dbRepository = dbRepository
     }
     
-    func addChat(_ chat: Chat, id chatRoomId: String) -> AnyPublisher<Chat, ServiceError> {
+    func addChat(_ chat: Chat, to chatRoomId: String) -> AnyPublisher<Chat, ServiceError> {
         var chat = chat
         chat.chatId = dbRepository.childByAutoId(chatRoomId: chatRoomId)
         
@@ -40,7 +40,7 @@ class ChatService: ChatServiceType {
 
 class StubChatService: ChatServiceType {
     
-    func addChat(_ chat: Chat, id chatRoomId: String) -> AnyPublisher<Chat, ServiceError> {
+    func addChat(_ chat: Chat, to chatRoomId: String) -> AnyPublisher<Chat, ServiceError> {
         Just(.stub1).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
     }
     

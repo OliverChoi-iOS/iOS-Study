@@ -36,6 +36,7 @@ struct ChatItemView: View {
             }
         }
         .padding(.horizontal, 35)
+        .background(.yellow)
     }
     
     var dateView: some View {

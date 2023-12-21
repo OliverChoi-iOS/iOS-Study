@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import Combine
 import FirebaseStorage
+import FirebaseStorageCombineSwift
 
 protocol UploadProviderType {
     func upload(path: String, data: Data, fileName: String) async throws -> URL
+    func upload(path: String, data: Data, fileName: String) -> AnyPublisher<URL, UploadError>
 }
 
 class UploadProvider: UploadProviderType {
@@ -21,5 +24,16 @@ class UploadProvider: UploadProviderType {
         let url = try await ref.downloadURL()
         
         return url
+    }
+    
+    func upload(path: String, data: Data, fileName: String) -> AnyPublisher<URL, UploadError> {
+        let ref = storageRef.child(path).child(fileName)
+        
+        return ref.putData(data)
+            .flatMap { _ in
+                ref.downloadURL()
+            }
+            .mapError { UploadError.error($0) }
+            .eraseToAnyPublisher()
     }
 }

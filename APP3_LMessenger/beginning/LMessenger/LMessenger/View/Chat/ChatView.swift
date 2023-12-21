@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import SwiftUIIntrospect
 
 struct ChatView: View {
     @EnvironmentObject private var navigationRouter: NavigationRouter
@@ -15,11 +16,38 @@ struct ChatView: View {
     @FocusState private var isFocused: Bool
     
     var body: some View {
-        ScrollView {
-            if viewModel.chatDataList.isEmpty {
-                Color.chatBg
-            } else {
-                contentView
+        VStack(spacing: 0) {
+            Rectangle()
+                .frame(height: 1)
+                .foregroundStyle(Color.chatBg)
+            
+            ScrollViewReader { proxy in
+                List {
+                    Group {
+                        if viewModel.chatDataList.isEmpty {
+                            Color.chatBg
+                        } else {
+                            contentView
+                        }
+                        
+                        Section {
+                            Rectangle()
+                                .frame(height: 1)
+                                .foregroundStyle(Color.chatBg)
+                                .id("bottom")
+                        }
+                    }
+                    .listRowInsets(.init())
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.chatBg)
+                    .listSectionSeparator(.hidden)
+                    .buttonStyle(PlainButtonStyle())
+                }
+                .background(Color.chatBg)
+                .listStyle(.plain)
+                .onChange(of: viewModel.chatDataList.last?.chats ?? [], perform: { newValue in
+                    proxy.scrollTo("bottom", anchor: .bottom)
+                })
             }
         }
         .background(Color.chatBg)
@@ -94,16 +122,19 @@ struct ChatView: View {
         ForEach(viewModel.chatDataList) { chatData in
             Section {
                 ForEach(chatData.chats) { chat in
-                    ChatItemView(
-                        message: chat.message ?? "",
-                        direction: viewModel.getDirection(id: chat.userId),
-                        date: chat.date
-                    )
+                    if let message = chat.message {
+                        ChatItemView(
+                            message: message,
+                            direction: viewModel.getDirection(id: chat.userId),
+                            date: chat.date
+                        )
+                    } else if let photoURL = chat.photoURL {
+                        ChatImageItemView(urlString: photoURL, direction: viewModel.getDirection(id: chat.userId))
+                    }
                 }
             } header: {
                 headerView(dateStr: chatData.dateStr)
             }
-
         }
     }
     
@@ -119,7 +150,9 @@ struct ChatView: View {
                 .font(.system(size: 10))
                 .foregroundStyle(Color.bgWh)
         }
-        .padding(.top)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity)
+        .background(Color.chatBg)
     }
 }
 

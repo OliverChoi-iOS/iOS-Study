@@ -74,12 +74,19 @@ class ChatViewModel: ObservableObject {
 
         case let .addChat(message):
             let newChat: Chat = .init(chatId: UUID().uuidString, userId: myUserId, message: message, date: Date())
-            container.services.chatService.addChat(newChat, id: chatRoomId)
+            
+            container.services.chatService.addChat(newChat, to: chatRoomId)
+                .flatMap({ [weak self] chat in
+                    guard let self else {
+                        return Fail<Void, ServiceError>(error: .selfIsNil).eraseToAnyPublisher()
+                    }
+                    
+                    return container.services.chatRoomService.updateChatRoomLastMessage(chatRoomId: chatRoomId, myUserId: myUserId, myUserName: myUser?.name ?? "", otherUserId: otherUserId, lastMessage: chat.lastMessage)
+                })
                 .sink { completion in
                     
-                } receiveValue: { [weak self] chat in
+                } receiveValue: { [weak self] in
                     self?.message = ""
-//                    self?.updateChatDataList(chat)
                 }.store(in: &subscriptions)
 
         case let .uploadImage(pickerItem):
@@ -88,9 +95,37 @@ class ChatViewModel: ObservableObject {
              2. uploadservice -> storage
              3. add url chat
              */
+            guard let pickerItem else { return }
             
-            return
-            
+            container.services.photoPickerService.loadTransferable(from: pickerItem)
+                .flatMap { [weak self] data in
+                    guard let self else {
+                        return Fail<URL, ServiceError>(error: .selfIsNil).eraseToAnyPublisher()
+                    }
+                
+                    return container.services.uploadService.uploadImage(source: .chat(chatRoomId: chatRoomId), data: data)
+                }
+                .flatMap { [weak self] url in
+                    guard let self else {
+                        return Fail<Chat, ServiceError>(error: .selfIsNil).eraseToAnyPublisher()
+                    }
+                    
+                    let newChat: Chat = .init(chatId: UUID().uuidString, userId: myUserId, message: nil, photoURL: url.absoluteString, date: Date())
+                    return container.services.chatService.addChat(newChat, to: chatRoomId)
+                }
+                .flatMap({ [weak self] chat in
+                    guard let self else {
+                        return Fail<Void, ServiceError>(error: .selfIsNil).eraseToAnyPublisher()
+                    }
+                    
+                    return container.services.chatRoomService.updateChatRoomLastMessage(chatRoomId: chatRoomId, myUserId: myUserId, myUserName: myUser?.name ?? "", otherUserId: otherUserId, lastMessage: chat.lastMessage)
+                })
+                .sink { completion in
+                    
+                } receiveValue: { _ in
+                    
+                }.store(in: &subscriptions)
+
         } // switch
     }
 }

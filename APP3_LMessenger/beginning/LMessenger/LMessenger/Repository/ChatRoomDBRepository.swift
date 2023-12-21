@@ -13,6 +13,10 @@ protocol ChatRoomDBRepositoryType {
     func getChatRoom(myUserId: String, otherUserId: String) -> AnyPublisher<ChatRoomObject?, DBError>
     func addChatRoom(_ object: ChatRoomObject, myUserId: String) -> AnyPublisher<Void, DBError>
     func loadChatRooms(myUserId: String) -> AnyPublisher<[ChatRoomObject], DBError>
+
+    /// 1. other user 쪽에도 채팅방 생성 (ChatRooms/{other user id}/{my user id}/
+    /// 2. last message update (내 채팅방, 상대 채팅방 모두)
+    func updateChatRoomLastMessage(chatRoomId: String, myUserId: String, myUserName: String, otherUserId: String, lastMessage: String) -> AnyPublisher<Void, DBError>
 }
 
 class ChatRoomDBRepository: ChatRoomDBRepositoryType {
@@ -105,5 +109,28 @@ class ChatRoomDBRepository: ChatRoomDBRepositoryType {
                     .eraseToAnyPublisher()
             }
         }.eraseToAnyPublisher()
+    }
+    
+    func updateChatRoomLastMessage(chatRoomId: String, myUserId: String, myUserName: String, otherUserId: String, lastMessage: String) -> AnyPublisher<Void, DBError> {
+        Future { [weak self] promise in
+            let values = [
+                "\(DBKey.ChatRooms)/\(myUserId)/\(otherUserId)/lastMessage": lastMessage,
+                "\(DBKey.ChatRooms)/\(otherUserId)/\(myUserId)/lastMessage": lastMessage,
+                "\(DBKey.ChatRooms)/\(otherUserId)/\(myUserId)/chatRoomId": chatRoomId,
+                "\(DBKey.ChatRooms)/\(otherUserId)/\(myUserId)/otherUserName": myUserName,
+                "\(DBKey.ChatRooms)/\(otherUserId)/\(myUserId)/otherUserId": myUserId
+            ]
+            
+            self?.db
+                .updateChildValues(values, withCompletionBlock: { error, _ in
+                    if let error {
+                        promise(.failure(error))
+                    } else {
+                        promise(.success(()))
+                    }
+                })
+        }
+        .mapError { DBError.error($0) }
+        .eraseToAnyPublisher()
     }
 }

@@ -69,6 +69,8 @@
 		A75720972B2A9E67006767DC /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75720962B2A9E67006767DC /* ChatListView.swift */; };
 		A75720992B2A9E71006767DC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75720982B2A9E71006767DC /* HomeView.swift */; };
 		A757209C2B2A9FFD006767DC /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = A757209B2B2A9FFD006767DC /* SwiftUIIntrospect */; };
+		A76590AE2B33BFCA00F9E4F1 /* UploadError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76590AD2B33BFCA00F9E4F1 /* UploadError.swift */; };
+		A76590B32B33C38700F9E4F1 /* ChatImageItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76590B22B33C38700F9E4F1 /* ChatImageItemView.swift */; };
 		A780C8EF2B16E76E007EF1AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A780C8EE2B16E76E007EF1AD /* LaunchScreen.storyboard */; };
 		A780C8F22B16E8A9007EF1AD /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780C8F12B16E8A9007EF1AD /* DIContainer.swift */; };
 		A780C8F52B16E8DB007EF1AD /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780C8F42B16E8DB007EF1AD /* Services.swift */; };
@@ -169,6 +171,8 @@
 		A75720922B2A9D5E006767DC /* MainTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabType.swift; sourceTree = "<group>"; };
 		A75720962B2A9E67006767DC /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		A75720982B2A9E71006767DC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A76590AD2B33BFCA00F9E4F1 /* UploadError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadError.swift; sourceTree = "<group>"; };
+		A76590B22B33C38700F9E4F1 /* ChatImageItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImageItemView.swift; sourceTree = "<group>"; };
 		A780C8EE2B16E76E007EF1AD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A780C8F12B16E8A9007EF1AD /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		A780C8F42B16E8DB007EF1AD /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				A753AC4A2B31772B0070C6E6 /* UploadProvider.swift */,
+				A76590AD2B33BFCA00F9E4F1 /* UploadError.swift */,
 			);
 			path = Upload;
 			sourceTree = "<group>";
@@ -481,15 +486,31 @@
 		A75720952B2A9E29006767DC /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				A75720962B2A9E67006767DC /* ChatListView.swift */,
-				A796D7CC2B3285F90056CE2F /* ChatListViewModel.swift */,
+				A76590B42B33C38B00F9E4F1 /* SubView */,
 				A796D7C72B327EE50056CE2F /* ChatView.swift */,
 				A796D7D22B3293440056CE2F /* ChatViewModel.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		A76590B42B33C38B00F9E4F1 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
 				A796D7DA2B32A6A80056CE2F /* ChatItemView.swift */,
 				A796D7DC2B32A6C90056CE2F /* ChatItemDirection.swift */,
 				A796D7DE2B32C9400056CE2F /* KeyboardToolbar.swift */,
+				A76590B22B33C38700F9E4F1 /* ChatImageItemView.swift */,
 			);
-			path = Chat;
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		A76590B52B33C3AF00F9E4F1 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				A75720962B2A9E67006767DC /* ChatListView.swift */,
+				A796D7CC2B3285F90056CE2F /* ChatListViewModel.swift */,
+			);
+			path = ChatList;
 			sourceTree = "<group>";
 		};
 		A780C8F02B16E89D007EF1AD /* General */ = {
@@ -529,6 +550,7 @@
 				A757207F2B2A87A8006767DC /* MainTab */,
 				A75720942B2A9E23006767DC /* Home */,
 				A753AC362B31245C0070C6E6 /* Profile */,
+				A76590B52B33C3AF00F9E4F1 /* ChatList */,
 				A75720952B2A9E29006767DC /* Chat */,
 				A796D7C92B327EEE0056CE2F /* Search */,
 			);
@@ -722,6 +744,7 @@
 				A753AC552B317DDD0070C6E6 /* MemoryStorage.swift in Sources */,
 				A780C8F92B16E998007EF1AD /* AuthenticationViewModel.swift in Sources */,
 				A753AC352B31225C0070C6E6 /* HomeModalDestination.swift in Sources */,
+				A76590B32B33C38700F9E4F1 /* ChatImageItemView.swift in Sources */,
 				A796D7CB2B327F010056CE2F /* SearchView.swift in Sources */,
 				A796D7DF2B32C9400056CE2F /* KeyboardToolbar.swift in Sources */,
 				A753AC572B317E980070C6E6 /* DiskStorage.swift in Sources */,
@@ -772,6 +795,7 @@
 				A796D7D12B3288140056CE2F /* LMessengerNavigationStackView.swift in Sources */,
 				A75606E12B318C7A001CA604 /* ChatRoomObject.swift in Sources */,
 				A753AC522B317D740070C6E6 /* ImageCacheService.swift in Sources */,
+				A76590AE2B33BFCA00F9E4F1 /* UploadError.swift in Sources */,
 				A75510432B30306B00EB1DEE /* UserDBRepository.swift in Sources */,
 				A75720912B2A8EF5006767DC /* ServiceError.swift in Sources */,
 				A796D7E32B32CD3D0056CE2F /* ChatObject.swift in Sources */,
