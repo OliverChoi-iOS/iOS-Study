@@ -8,7 +8,7 @@
 import Foundation
 
 class DIContainer: ObservableObject {
-    // TODO: service
+    // service
     var services: ServiceType
     
     init(services: ServiceType) {

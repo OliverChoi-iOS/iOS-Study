@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchView: View {
     @Environment(\.managedObjectContext) var objectContext
     @EnvironmentObject private var navigationRouter: NavigationRouter
+    @EnvironmentObject private var homeViewModel: HomeViewModel
     @StateObject var viewModel: SearchViewModel
     
     var body: some View {
@@ -21,18 +22,23 @@ struct SearchView: View {
             } else {
                 List {
                     ForEach(viewModel.searchResults) { result in
-                        HStack(spacing: 8) {
-                            URLImageView(urlString: result.profileURL)
-                                .frame(width: 26, height: 26)
-                                .clipShape(Circle())
-                            
-                            Text(result.name)
-                                .font(.system(size: 14, weight: .bold))
-                                .foregroundStyle(Color.bkText)
+                        Button {
+                            homeViewModel.modalDestination = .otherProfile(result.id)
+                        } label: {
+                            HStack(spacing: 8) {
+                                URLImageView(urlString: result.profileURL)
+                                    .frame(width: 26, height: 26)
+                                    .clipShape(Circle())
+                                
+                                Text(result.name)
+                                    .font(.system(size: 14, weight: .bold))
+                                    .foregroundStyle(Color.bkText)
+                            }
                         }
                         .listRowInsets(.init())
                         .listRowSeparator(.hidden)
                         .padding(.horizontal, 30)
+                        .buttonStyle(.plain)
                     }
                 }
                 .listStyle(.plain)
@@ -81,10 +87,12 @@ struct SearchView: View {
     let container: DIContainer = .init(services: StubService())
     let navigationRouter: NavigationRouter = .init()
     let searchDataController: SearchDataController = .init()
+    let homeViewModel: HomeViewModel = .init(container: container, navigationRouter: navigationRouter, userId: "user1_id")
     
     return SearchView(
         viewModel: .init(container: container, userId: "user1_id")
     )
     .environmentObject(navigationRouter)
     .environment(\.managedObjectContext, searchDataController.persistantContainer.viewContext)
+    .environmentObject(homeViewModel)
 }

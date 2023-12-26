@@ -10,15 +10,18 @@ struct AuthenticatedView: View {
     @StateObject private var authViewModel: AuthenticationViewModel
     @StateObject private var navigationRouter: NavigationRouter
     @StateObject private var searchDataController: SearchDataController
+    @StateObject private var appearanceController: AppearanceController
     
     init(
         authViewModel: AuthenticationViewModel,
         navigationRouter: NavigationRouter,
-        searchDataController: SearchDataController
+        searchDataController: SearchDataController,
+        appearanceController: AppearanceController
     ) {
         _authViewModel = StateObject(wrappedValue: authViewModel)
         _navigationRouter = StateObject(wrappedValue: navigationRouter)
         _searchDataController = StateObject(wrappedValue: searchDataController)
+        _appearanceController = StateObject(wrappedValue: appearanceController)
     }
     
     var body: some View {
@@ -30,8 +33,10 @@ struct AuthenticatedView: View {
                 MainTabView()
                     .environment(\.managedObjectContext, searchDataController.persistantContainer.viewContext)
                     .environmentObject(navigationRouter)
+                    .environmentObject(appearanceController)
             }
         }
+        .preferredColorScheme(appearanceController.appearance.colorScheme)
         .environmentObject(authViewModel)
         .onAppear {
             authViewModel.send(action: .checkAuthenticationState)
@@ -43,6 +48,7 @@ struct AuthenticatedView: View {
     return AuthenticatedView(
         authViewModel: .init(container: .init(services: StubService())),
         navigationRouter: .init(),
-        searchDataController: .init()
+        searchDataController: .init(),
+        appearanceController: .init(AppearanceType.automatic.rawValue)
     )
 }
