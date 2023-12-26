@@ -32,11 +32,11 @@ class ChatViewModel: ObservableObject {
     private let myUserId: String
     private let otherUserId: String
     
-    private var container: DIContainer
+    private var container: DIContainable
     private var subscriptions = Set<AnyCancellable>()
     
     init(
-        container: DIContainer,
+        container: DIContainable,
         chatRoomId: String,
         myUserId: String,
         otherUserId: String

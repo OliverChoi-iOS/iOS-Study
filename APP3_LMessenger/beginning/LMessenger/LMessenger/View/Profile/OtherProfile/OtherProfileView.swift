@@ -96,11 +96,14 @@ struct OtherProfileView: View {
 }
 
 #Preview {
-    OtherProfileView(
+    let container: DIContainer = .init(services: StubService())
+    
+    return OtherProfileView(
         viewModel: .init(
-            container: .init(services: StubService()),
+            container: container,
             userId: "user1_id"
         ),
         goToChat: { _ in }
     )
+    .environmentObject(container)
 }

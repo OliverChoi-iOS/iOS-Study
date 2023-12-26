@@ -70,14 +70,11 @@ fileprivate struct ChatRoomCell: View {
 
 #Preview {
     let container: DIContainer = .init(services: StubService())
-    let navigationRouter: NavigationRouter = .init()
     
     return ChatListView(
         viewModel: .init(
             container: container,
-            navigationRouter: navigationRouter,
             userId: "user1_id"
         )
     )
-    .environmentObject(navigationRouter)
 }

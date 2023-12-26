@@ -17,18 +17,15 @@ class ChatListViewModel: ObservableObject {
     
     let userId: String
     
-    private var container: DIContainer
-    private var navigationRouter: NavigationRouter
+    private var container: DIContainable
     
     private var subscriptions = Set<AnyCancellable>()
     
     init(
-        container: DIContainer,
-        navigationRouter: NavigationRouter,
+        container: DIContainable,
         userId: String
     ) {
         self.container = container
-        self.navigationRouter = navigationRouter
         self.userId = userId
     }
     

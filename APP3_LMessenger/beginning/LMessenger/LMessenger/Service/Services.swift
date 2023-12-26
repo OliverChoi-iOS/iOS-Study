@@ -29,14 +29,15 @@ class Services: ServiceType {
     var chatService: ChatServiceType
     
     init() {
+        let dbReference = DBReference()
         self.authService = AuthenticationService()
-        self.userService = UserService(dbRepository: UserDBRepository())
+        self.userService = UserService(dbRepository: UserDBRepository(reference: dbReference))
         self.contactService = ContactService()
         self.photoPickerService = PhotoPickerService()
         self.uploadService = UploadService(provider: UploadProvider())
         self.imageCacheService = ImageCacheService(memoryStoarge: MemoryStorage(), diskStorageType: DiskStorage())
-        self.chatRoomService = ChatRoomService(dbRepository: ChatRoomDBRepository())
-        self.chatService = ChatService(dbRepository: ChatDBRepository())
+        self.chatRoomService = ChatRoomService(dbRepository: ChatRoomDBRepository(reference: dbReference))
+        self.chatService = ChatService(dbRepository: ChatDBRepository(reference: dbReference))
     }
 }
 

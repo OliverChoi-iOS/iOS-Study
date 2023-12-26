@@ -11,4 +11,5 @@ enum DBError: Error {
     case error(Error)
     case emptyValue
     case invalidatedType
+    case selfIsNil
 }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LMessengerNavigationStackView<Content: View>: View {
     @EnvironmentObject private var container: DIContainer
-    @EnvironmentObject private var navigationRouter: NavigationRouter
     
     var content: Content
     
@@ -20,7 +19,7 @@ struct LMessengerNavigationStackView<Content: View>: View {
     }
     
     var body: some View {
-        NavigationStack(path: $navigationRouter.destinations) {
+        NavigationStack(path: $container.navigationRouter.destinations) {
             content
                 .navigationDestination(for: NavigationDestination.self) {
                     switch $0 {
@@ -45,11 +44,9 @@ struct LMessengerNavigationStackView<Content: View>: View {
 
 #Preview {
     let container: DIContainer = .init(services: StubService())
-    let navigationRouter: NavigationRouter = .init()
     
     return LMessengerNavigationStackView {
         Text("test")
     }
     .environmentObject(container)
-    .environmentObject(navigationRouter)
 }

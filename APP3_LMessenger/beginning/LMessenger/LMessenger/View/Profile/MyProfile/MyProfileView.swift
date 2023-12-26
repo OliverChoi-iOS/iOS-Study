@@ -113,5 +113,8 @@ struct MyProfileView: View {
 }
 
 #Preview {
-    MyProfileView(viewModel: .init(container: .init(services: StubService()), userId: "user1_id"))
+    let container: DIContainer = .init(services: StubService())
+    
+    return MyProfileView(viewModel: .init(container: container, userId: "user1_id"))
+        .environmentObject(container)
 }

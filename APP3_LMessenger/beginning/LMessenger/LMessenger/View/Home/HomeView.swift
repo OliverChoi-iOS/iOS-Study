@@ -160,15 +160,12 @@ struct HomeView: View {
 
 #Preview {
     let container: DIContainer = .init(services: StubService())
-    let navigationRouter: NavigationRouter = .init()
     
     return HomeView(
         viewModel: .init(
             container: container,
-            navigationRouter: navigationRouter,
             userId: "user1_id"
         )
     )
     .environmentObject(container)
-    .environmentObject(navigationRouter)
 }

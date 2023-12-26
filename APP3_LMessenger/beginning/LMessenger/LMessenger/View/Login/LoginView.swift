@@ -61,6 +61,8 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
-        .environmentObject(AuthenticationViewModel(container: .init(services: StubService())))
+    let container: DIContainer = .init(services: StubService())
+    
+    return LoginView()
+        .environmentObject(AuthenticationViewModel(container: container))
 }

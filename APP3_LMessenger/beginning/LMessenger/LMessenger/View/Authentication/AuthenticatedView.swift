@@ -7,21 +7,13 @@
 import SwiftUI
 
 struct AuthenticatedView: View {
+    @EnvironmentObject private var container: DIContainer
     @StateObject private var authViewModel: AuthenticationViewModel
-    @StateObject private var navigationRouter: NavigationRouter
-    @StateObject private var searchDataController: SearchDataController
-    @StateObject private var appearanceController: AppearanceController
     
     init(
-        authViewModel: AuthenticationViewModel,
-        navigationRouter: NavigationRouter,
-        searchDataController: SearchDataController,
-        appearanceController: AppearanceController
+        authViewModel: AuthenticationViewModel
     ) {
         _authViewModel = StateObject(wrappedValue: authViewModel)
-        _navigationRouter = StateObject(wrappedValue: navigationRouter)
-        _searchDataController = StateObject(wrappedValue: searchDataController)
-        _appearanceController = StateObject(wrappedValue: appearanceController)
     }
     
     var body: some View {
@@ -31,12 +23,10 @@ struct AuthenticatedView: View {
                 LoginIntroView()
             case .authenticated:
                 MainTabView()
-                    .environment(\.managedObjectContext, searchDataController.persistantContainer.viewContext)
-                    .environmentObject(navigationRouter)
-                    .environmentObject(appearanceController)
+                    .environment(\.managedObjectContext, container.searchDataController.persistantContainer.viewContext)
             }
         }
-        .preferredColorScheme(appearanceController.appearance.colorScheme)
+        .preferredColorScheme(container.appearanceController.appearance.colorScheme)
         .environmentObject(authViewModel)
         .onAppear {
             authViewModel.send(action: .checkAuthenticationState)
@@ -45,10 +35,10 @@ struct AuthenticatedView: View {
 }
 
 #Preview {
+    let container: DIContainer = .init(services: StubService())
+    
     return AuthenticatedView(
-        authViewModel: .init(container: .init(services: StubService())),
-        navigationRouter: .init(),
-        searchDataController: .init(),
-        appearanceController: .init(AppearanceType.automatic.rawValue)
+        authViewModel: .init(container: container)
     )
+    .environmentObject(container)
 }

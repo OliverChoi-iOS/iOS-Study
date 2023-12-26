@@ -10,7 +10,7 @@ import PhotosUI
 import SwiftUIIntrospect
 
 struct ChatView: View {
-    @EnvironmentObject private var navigationRouter: NavigationRouter
+    @EnvironmentObject private var container: DIContainer
     @StateObject var viewModel: ChatViewModel
     
     @FocusState private var isFocused: Bool
@@ -57,7 +57,7 @@ struct ChatView: View {
         .toolbar {
             ToolbarItemGroup(placement: .topBarLeading) {
                 Button(action: {
-                    navigationRouter.pop()
+                    container.navigationRouter.pop()
                 }, label: {
                     Image("back")
                 })
@@ -158,7 +158,6 @@ struct ChatView: View {
 
 #Preview {
     let container: DIContainer = .init(services: StubService())
-    let navigationRouter: NavigationRouter = .init()
     
     return ChatView(
         viewModel: .init(
@@ -168,5 +167,5 @@ struct ChatView: View {
             otherUserId: "user2_id"
         )
     )
-    .environmentObject(navigationRouter)
+    .environmentObject(container)
 }

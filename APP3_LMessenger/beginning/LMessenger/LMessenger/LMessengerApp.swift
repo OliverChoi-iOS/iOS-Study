@@ -15,12 +15,12 @@ struct LMessengerApp: App {
     var body: some Scene {
         WindowGroup {
             AuthenticatedView(
-                authViewModel: .init(container: container),
-                navigationRouter: .init(),
-                searchDataController: .init(),
-                appearanceController: .init(appearanceValue)
+                authViewModel: .init(container: container)
             )
-                .environmentObject(container)
+            .environmentObject(container)
+            .onAppear {
+                container.appearanceController.changeAppearance(AppearanceType(rawValue: appearanceValue) ?? .automatic)
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @Environment(\.managedObjectContext) var objectContext
-    @EnvironmentObject private var navigationRouter: NavigationRouter
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var homeViewModel: HomeViewModel
     @StateObject var viewModel: SearchViewModel
     
@@ -51,7 +51,7 @@ struct SearchView: View {
     var topView: some View {
         HStack(spacing: 0) {
             Button {
-                navigationRouter.pop()
+                container.navigationRouter.pop()
             } label: {
                 Image("back")
             }
@@ -85,14 +85,13 @@ struct SearchView: View {
 
 #Preview {
     let container: DIContainer = .init(services: StubService())
-    let navigationRouter: NavigationRouter = .init()
     let searchDataController: SearchDataController = .init()
-    let homeViewModel: HomeViewModel = .init(container: container, navigationRouter: navigationRouter, userId: "user1_id")
+    let homeViewModel: HomeViewModel = .init(container: container, userId: "user1_id")
     
     return SearchView(
         viewModel: .init(container: container, userId: "user1_id")
     )
-    .environmentObject(navigationRouter)
+    .environmentObject(container)
     .environment(\.managedObjectContext, searchDataController.persistantContainer.viewContext)
     .environmentObject(homeViewModel)
 }

@@ -24,3 +24,13 @@ extension ChatRoomObject {
         )
     }
 }
+
+extension ChatRoomObject {
+    static var stub1: ChatRoomObject {
+        .init(
+            chatRoomId: "chatRoom1_id",
+            otherUserName: "user2",
+            otherUserId: "user2_id"
+        )
+    }
+}

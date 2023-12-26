@@ -17,11 +17,11 @@ class URLImageViewModel: ObservableObject {
     @Published var loadedImage: UIImage?
     
     private var loading: Bool = false
-    private var container: DIContainer
+    private var container: DIContainable
     private var urlString: String
     private var subscriptions = Set<AnyCancellable>()
     
-    init(container: DIContainer, urlString: String) {
+    init(container: DIContainable, urlString: String) {
         self.container = container
         self.urlString = urlString
     }

@@ -20,10 +20,10 @@ class SearchViewModel: ObservableObject {
     @Published var searchResults: [User] = []
     
     private let userId: String
-    private var container: DIContainer
+    private var container: DIContainable
     private var subscriptions = Set<AnyCancellable>()
     
-    init(container: DIContainer, userId: String) {
+    init(container: DIContainable, userId: String) {
         self.container = container
         self.userId = userId
         
