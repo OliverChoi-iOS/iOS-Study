@@ -13,6 +13,7 @@ class SearchViewModel: ObservableObject {
         case requestQuery(String)
         case clearSearchResult
         case clearSearchText
+        case setSearchText(String)
     }
     
     @Published var shouldBecomeFirstResponder: Bool = false
@@ -55,10 +56,15 @@ class SearchViewModel: ObservableObject {
 
         case .clearSearchResult:
             searchResults = []
+            
         case .clearSearchText:
             searchText = ""
             shouldBecomeFirstResponder = false
             searchResults = []
+            
+        case let .setSearchText(text):
+            self.searchText = text
+            
         }
     }
 }

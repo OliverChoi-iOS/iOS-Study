@@ -12,13 +12,17 @@ struct SearchView: View {
     @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var homeViewModel: HomeViewModel
     @StateObject var viewModel: SearchViewModel
+    @AccessibilityFocusState var isSearchBarFocused: Bool
     
     var body: some View {
         VStack {
             topView
             
             if viewModel.searchResults.isEmpty {
-                RecentSearchView()
+                RecentSearchView { text in
+                    viewModel.send(action: .setSearchText(text))
+                    isSearchBarFocused = true
+                }
             } else {
                 List {
                     ForEach(viewModel.searchResults) { result in
@@ -63,6 +67,7 @@ struct SearchView: View {
                     self.setSearchResultWithContext()
                 }
             )
+            .accessibilityFocused($isSearchBarFocused)
             
             Button {
                 viewModel.send(action: .clearSearchText)

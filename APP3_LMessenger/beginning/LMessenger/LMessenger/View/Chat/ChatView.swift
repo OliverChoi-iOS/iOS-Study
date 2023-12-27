@@ -59,7 +59,7 @@ struct ChatView: View {
                 Button(action: {
                     container.navigationRouter.pop()
                 }, label: {
-                    Image("back")
+                    Image("back", label: Text("뒤로가기"))
                 })
                 
                 Text(viewModel.otherUser?.name ?? "대화방이름")
@@ -68,9 +68,9 @@ struct ChatView: View {
             }
             
             ToolbarItemGroup(placement: .topBarTrailing) {
-                Image("search_chat")
-                Image("bookmark")
-                Image("settings")
+                Image(decorative: "search_chat")
+                Image(decorative: "bookmark")
+                Image(decorative: "settings")
             }
         }
         .keyboardToolbar(height: 50, view: {
@@ -78,20 +78,20 @@ struct ChatView: View {
                 Button(action: {
                     
                 }, label: {
-                    Image("other_add")
+                    Image("other_add", label: Text("더보기"))
                 })
                 
                 PhotosPicker(
                     selection: $viewModel.imageSelection,
                     matching: .images
                 ) {
-                    Image("image_add")
+                    Image("image_add", label: Text("사진 첨부"))
                 }
                 
                 Button(action: {
                     
                 }, label: {
-                    Image("photo_camera")
+                    Image("photo_camera", label: Text("카메라"))
                 })
                 
                 TextField("", text: $viewModel.message)
@@ -128,8 +128,15 @@ struct ChatView: View {
                             direction: viewModel.getDirection(id: chat.userId),
                             date: chat.date
                         )
+                        .accessibilityElement(children: .combine)
                     } else if let photoURL = chat.photoURL {
-                        ChatImageItemView(urlString: photoURL, direction: viewModel.getDirection(id: chat.userId))
+                        ChatImageItemView(
+                            urlString: photoURL,
+                            direction: viewModel.getDirection(id: chat.userId),
+                            date: chat.date
+                        )
+                        .accessibilityElement(children: .combine)
+                        .accessibilityAddTraits(.isImage)
                     }
                 }
             } header: {
@@ -138,6 +145,7 @@ struct ChatView: View {
         }
     }
     
+    // yyyy.MM.dd E -> Date -> yyyy년 MM월
     func headerView(dateStr: String) -> some View {
         ZStack {
             Rectangle()
@@ -153,6 +161,7 @@ struct ChatView: View {
         .padding(.vertical, 10)
         .frame(maxWidth: .infinity)
         .background(Color.chatBg)
+        .accessibilityLabel(Text(dateStr.toChatDate?.toChatDataAccessibility ?? ""))
     }
 }
 

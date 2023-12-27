@@ -11,6 +11,8 @@ struct RecentSearchView: View {
     @Environment(\.managedObjectContext) private var objectContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]) var results: FetchedResults<SearchResult>
     
+    let onItemTapped: (String) -> Void
+    
     var body: some View {
         VStack(spacing: 0) {
             titleView
@@ -27,19 +29,24 @@ struct RecentSearchView: View {
                     LazyVStack {
                         ForEach(results, id: \.self) { result in
                             HStack {
-                                Text(result.name ?? "")
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(Color.bkText)
+                                Button {
+                                    onItemTapped(result.name ?? "")
+                                } label: {
+                                    Text(result.name ?? "")
+                                        .font(.system(size: 14))
+                                        .foregroundStyle(Color.bkText)
+                                }
                                 Spacer()
                                 Button(action: {
                                     objectContext.delete(result)
                                     try? objectContext.save()
                                 }, label: {
-                                    Image("close_search")
+                                    Image("close_search", label: Text("검색어 삭제"))
                                         .resizable()
                                         .frame(width: 15, height: 15)
                                 })
                             }
+                            .accessibilityElement(children: .combine)
                         }
                     }
                 }
@@ -55,12 +62,13 @@ struct RecentSearchView: View {
             
             Spacer()
         }
+        .accessibilityAddTraits(.isHeader)
     }
 }
 
 #Preview {
     let searchDataController: SearchDataController = .init()
     
-    return RecentSearchView()
+    return RecentSearchView(onItemTapped: {_ in})
         .environment(\.managedObjectContext, searchDataController.persistantContainer.viewContext)
 }

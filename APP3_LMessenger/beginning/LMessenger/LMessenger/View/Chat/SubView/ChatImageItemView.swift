@@ -10,11 +10,13 @@ import SwiftUI
 struct ChatImageItemView: View {
     let urlString :String
     let direction: ChatItemDirection
+    let date: Date
     
     var body: some View {
         HStack {
             if direction == .right {
                 Spacer()
+                dateView
             }
             
             URLImageView(urlString: urlString)
@@ -22,13 +24,21 @@ struct ChatImageItemView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
             if direction == .left {
+                dateView
                 Spacer()
             }
         }
         .padding(.horizontal, 35)
     }
+    
+    var dateView: some View {
+        Text(date.toChatTime)
+            .font(.system(size: 10))
+            .foregroundStyle(Color.greyDeep)
+            .accessibilityLabel(Text(date.toChatTimeAccessibility))
+    }
 }
 
 #Preview {
-    ChatImageItemView(urlString: "", direction: .right)
+    ChatImageItemView(urlString: "", direction: .right, date: Date())
 }

@@ -43,6 +43,7 @@ struct ChatItemView: View {
         Text(date.toChatTime)
             .font(.system(size: 10))
             .foregroundStyle(Color.greyDeep)
+            .accessibilityLabel(Text(date.toChatTimeAccessibility))
     }
 }
 

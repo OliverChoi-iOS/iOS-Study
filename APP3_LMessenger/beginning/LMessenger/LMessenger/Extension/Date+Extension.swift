@@ -29,10 +29,26 @@ extension Date {
         return formatter
     }
     
+    static var chatDataAccessibilityFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy년 MM월 dd일 E"
+        
+        return formatter
+    }
+    
     static var chatTimeFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "a h:mm"
+        
+        return formatter
+    }
+    
+    static var chatTimeAccessibilityFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "a h시 mm분"
         
         return formatter
     }
@@ -42,7 +58,21 @@ extension Date {
         return Self.chatDataKeyFormatter.string(from: self)
     }
     
+    var toChatDataAccessibility: String {
+        return Self.chatDataAccessibilityFormatter.string(from: self)
+    }
+    
     var toChatTime: String {
         return Self.chatTimeFormatter.string(from: self)
+    }
+    
+    var toChatTimeAccessibility: String {
+        return Self.chatTimeAccessibilityFormatter.string(from: self)
+    }
+}
+
+extension String {
+    var toChatDate: Date? {
+        return Date.chatDataKeyFormatter.date(from: self)
     }
 }
