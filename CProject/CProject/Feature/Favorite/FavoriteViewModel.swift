@@ -22,6 +22,7 @@ final class FavoriteViewModel {
     }
     
     private(set) var state: State = .init()
+    private var loadDataTask: Task<Void, Never>?
     
     func process(action: Action) {
         switch action {
@@ -35,11 +36,15 @@ final class FavoriteViewModel {
             print(error)
         }
     }
+    
+    deinit {
+        loadDataTask?.cancel()
+    }
 }
 
 extension FavoriteViewModel {
     private func loadFavoriteFromAPI() {
-        Task {
+        loadDataTask = Task {
             do {
                 let response = try await NetworkService.shared.getFavoriteData()
                 process(action: .getFavoriteSuccess(response))
