@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 final class PurchaseViewModel: ObservableObject {
     enum Action {
@@ -19,6 +20,7 @@ final class PurchaseViewModel: ObservableObject {
     }
     
     @Published private(set) var state: State = .init()
+    private(set) var showPaymentViewController: PassthroughSubject<Void, Never> = .init()
     
     func process(action: Action) {
         switch action {
@@ -37,7 +39,7 @@ extension PurchaseViewModel {
             guard let self else { return }
             
             state.purchaseItems = [
-                .init(title: "PlayStation1", description: "수량 1개 / 무료배송"),
+                .init(title: "PlayStation1PlayStation1PlayStation1PlayStation1", description: "수량 1개 / 무료배송"),
                 .init(title: "PlayStation2", description: "수량 1개 / 무료배송"),
                 .init(title: "PlayStation3", description: "수량 1개 / 무료배송"),
                 .init(title: "PlayStation4", description: "수량 1개 / 무료배송"),
@@ -51,6 +53,6 @@ extension PurchaseViewModel {
     
     @MainActor
     private func didTapPurchaseButton() async {
-        
+        showPaymentViewController.send()
     }
 }
